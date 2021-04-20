@@ -1,7 +1,9 @@
 /*The out most div property*/
 .display_item_menu {
+    display: inline-block;
     position: relative;
     width: 400px;
+    top: 0px;
 }
 
 .display_item_menu *{

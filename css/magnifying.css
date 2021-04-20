@@ -1,19 +1,26 @@
-div.input_div{
+.mag_div_list {
+    display: inline-block;
+    width: 800px;
+}
+
+.mag_div_list .input_div{
     position: relative;
     display: inline-block;
+    width: 200px;
     margin: 20px;
     padding: 0px;
 }
 
-div.input_div p:hover{
+.mag_div_list .input_div p:hover{
     cursor: cell;
 }
 
-div.input_div input{
+.mag_div_list .input_div input{
+    width: 200px;
     border: 2px solid;
 }
 
-div.input_div canvas{
+.mag_div_list .input_div canvas{
     position: absolute;
     left: 100px;
     top: 100px;

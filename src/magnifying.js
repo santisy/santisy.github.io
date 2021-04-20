@@ -1,6 +1,6 @@
-function moveAndDrawOnImage(div, e, x = -1, y = -1){
-    var mov_ele = div.getElementsByTagName("canvas")[0]
-    var input_ele = div.getElementsByTagName("input")[0]
+function moveAndDrawOnImage(ratio_, div, e, x = -1, y = -1){
+    var mov_ele = div.getElementsByTagName("canvas")[0];
+    var input_ele = div.getElementsByTagName("input")[0];
     if (x < 0 && y < 0){
         var x = e.pageX - div.offsetLeft - input_ele.clientLeft;
         var y = e.pageY - div.offsetTop - input_ele.clientTop;
@@ -16,8 +16,8 @@ function moveAndDrawOnImage(div, e, x = -1, y = -1){
         div.y_s = y_start = y_start > 0 ? y_start : 0
         let context = mov_ele.getContext('2d')
         context.drawImage(div.imageObj,
-            x_start, y_start,
-            div.p_size, div.p_size,
+            Math.fround(x_start * ratio_), Math.fround(y_start * ratio_),
+            Math.fround(div.p_size * ratio_), Math.fround(div.p_size * ratio_),
             0, 0,
             div.dis_size, div.dis_size);
         // Move the canvas
@@ -28,11 +28,10 @@ function moveAndDrawOnImage(div, e, x = -1, y = -1){
     return [x, y];
 }
 
-function scrollAndResize(div, e, orig_p_size, p_size = -1){
+function scrollAndResize(ratio_, div, e, orig_p_size, p_size = -1){
     var mov_ele = div.getElementsByTagName("canvas")[0];
 
     // The change ratio defined by mousewheel
-    console.log(p_size)
     if (p_size < 0){
         var size_change = - Math.fround(e.deltaY / 100);
         if (size_change > 0){
@@ -47,32 +46,40 @@ function scrollAndResize(div, e, orig_p_size, p_size = -1){
 
     let context = mov_ele.getContext('2d');
     context.drawImage(div.imageObj,
-        div.x_s, div.y_s,
-        div.p_size, div.p_size,
+        Math.fround(div.x_s * ratio_), Math.fround(div.y_s * ratio_),
+        Math.fround(div.p_size * ratio_), Math.fround(div.p_size * ratio_),
         0, 0,
         div.dis_size, div.dis_size);
 
     return div.p_size;
 }
 
-window.onload = function(){
-    input_div_list = document.getElementsByClassName("input_div")
-    // Gloabl Variable
-    let p_size = 50;  // The patch size
-    let dis_size = 60;  // The resized size (the fixed magnifying glass size)
+// Main function
+function magnifyingDiv(mag_div_list, p_size = 50, dis_size = 60){
+    // Magnifying Variables, both are adjustable
+    this.p_size = p_size;  // The patch size
+    this.dis_size = dis_size;  // The resized size (the fixed magnifying glass size)
+    var ratio_ = 0;
 
-    for (var i=0; i<input_div_list.length; i++){
-        input_div = input_div_list[i];
+    // Generate and attach to each of them
+    for (var i=0; i<mag_div_list.length; i++){
+        var mag_div = mag_div_list[i];
 
-        mov_id = this.String(i)+"mov_p";
-        canvas = Object.assign(document.createElement("canvas"), {"id": mov_id})
+        var mov_id = new String(i)+"mov_p";
+        var canvas = Object.assign(document.createElement("canvas"), {"id": mov_id})
         // Canvas width and height setting are important
         canvas.width = dis_size
         canvas.height = dis_size
 
-        input_src = input_div.getElementsByTagName("input")[0].src;
+        var input_ele = mag_div.getElementsByTagName("input")[0]
+        var input_src = input_ele.src;
+        var imageObj = new Image();
+        imageObj.src = input_src;
+        if (imageObj.width != ""){ // Should think this through if the image does not exist
+            ratio_ = imageObj.width / 200; // TODO:
+            //p_size = Math.fround(this.ratio_ * p_size);
+        }
         let context = canvas.getContext('2d');
-        let imageObj = new Image();
 
         imageObj.onload = function() {
             // Draw cropped image
@@ -85,34 +92,35 @@ window.onload = function(){
             var destWidth = dis_size;
             var destHeight = dis_size;
 
-            context.drawImage(imageObj, sourceX, sourceY,
-                sourceWidth, sourceHeight,
-                destX, destY, destWidth, destHeight);
+            context.drawImage(imageObj, 
+                Math.fround(sourceX * this.ratio_), Math.fround(sourceY * this.ratio_),
+                Math.fround(sourceWidth * this.ratio_), Math.fround(sourceHeight * this.ratio_),
+                destX, destY, 
+                destWidth, destHeight);
         };
-        imageObj.src = input_src;
-        input_div.appendChild(canvas);
+        mag_div.appendChild(canvas);
 
         // Initial sizes and image object
-        input_div.dis_size = dis_size
-        input_div.p_size = p_size
-        input_div.imageObj = imageObj
-
+        mag_div.dis_size = dis_size
+        mag_div.p_size = p_size
+        mag_div.imageObj = imageObj
 
         // Move the magnifying glasses
-        input_div.addEventListener("mousemove", function(e){
-            let start_coord = moveAndDrawOnImage(this, e);
-            for (var i = 0; i < input_div_list.length; i++){
-                moveAndDrawOnImage(input_div_list[i], e, start_coord[0], start_coord[1]);
+        mag_div.addEventListener("mousemove", function(e){
+            let start_coord = moveAndDrawOnImage(ratio_, this, e);
+            for (var j = 0; j < mag_div_list.length; j++){
+                moveAndDrawOnImage(ratio_, mag_div_list[j], e, start_coord[0], start_coord[1]);
             }
         })
 
         // Scroll the wheel to resize image
-        input_div.addEventListener("mousewheel", function(e){
-            let new_p_size = scrollAndResize(this, e, p_size);
-            for (var i = 0; i < input_div_list.length; i++){
-                scrollAndResize(input_div_list[i], e, p_size, new_p_size);
+        mag_div.addEventListener("mousewheel", function(e){
+            let new_p_size = scrollAndResize(ratio_, this, e, p_size);
+            for (var j = 0; j < mag_div_list.length; j++){
+                scrollAndResize(ratio_, mag_div_list[j], e, p_size, new_p_size);
             }
         }, {passive: true})
     }
-
 }
+
+export {magnifyingDiv};
