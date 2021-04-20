@@ -1,0 +1,172 @@
+/*The out most div property*/
+.display_item_menu {
+    position: relative;
+    width: 400px;
+}
+
+.display_item_menu *{
+  transition: all .4s ease;
+}
+
+/*Infomation style*/
+.display_item_menu >.info {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 170px;
+  font-size: 14px;
+  font-family: sans-serif;
+  padding-left: 5px;
+  border-radius: 10px;
+  z-index: 9999;
+}
+
+.display_item_menu >.info >.fas.fa-info-circle{
+  font-size: 10px;
+  position: absolute;
+  top: -5px;
+}
+
+.display_item_menu >.info:hover >.fas.fa-info-circle{
+  font-size: 10px;
+  position: absolute;
+  top: 10px;
+}
+
+
+.display_item_menu >.info:hover {
+  background-color: white;
+  padding: 5px 0 0 5px;
+  width: 300px;
+  height: 150px;
+  overflow: auto;
+  text-align: left !important;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.display_item_menu >.info >.extra-info {
+    position: absolute;
+    display: none;
+    line-height: 20px;
+    font-size: 12px;
+    left: 20px;
+  }
+  
+.display_item_menu >.info:hover >.extra-info {
+display: inline;
+}
+
+
+/*The overall titile style property*/
+.display_item_menu p.title{
+  position: aboslute;
+  margin: 5px;
+  display: inline-block;
+  padding: 5px;
+  font-size: 20px;
+  font-family: sans-serif;
+  text-align: left;
+  font-weight: bold;
+}
+  
+/*The setting button and other buttons' property*/
+.display_item_menu input.div_button{
+    margin-right: 5px;
+    display: inline-block;
+    padding: 5px;
+    font-size: 15px;
+    font-family: sans-serif;
+    text-align: left;
+    font-weight: bold;
+    background-color: rgb(181, 187, 174);
+    border-radius: 5px;
+}
+
+.display_item_menu input.div_button.settings_button{
+    margin-left: 20px;
+}
+.display_item_menu input.div_button.action_button{
+    margin-left: 20px;
+}
+
+
+/*Basic style of item list */
+.display_item_menu ul.items_list{
+    padding-left: 5px;
+}
+
+.display_item_menu ul.items_list li {
+    list-style-type: none;
+    position: relative;
+    margin: 2px;
+    padding: 0.5em 0.5em 0.5em 2em;
+    background: lightgrey;
+    font-family: sans-serif;
+  }
+
+.display_item_menu div.scrollable_content{
+    width: 400px;
+    height: 200px;
+    overflow: auto;
+} /*Scrollable*/
+
+
+/*Item list while dragging*/
+.display_item_menu ul.items_list li.dragged {
+background-color: #3498eb;
+opacity: 0.7;
+}
+
+/*li's selected and toselect status and logical relationship*/
+.display_item_menu ul.items_list li:not(toselect) i.far.fa-square{
+    display: none;
+}
+.display_item_menu ul.items_list li.toselect.selected i.far.fa-square{
+    display: none;
+}
+.display_item_menu ul.items_list li:not(selected) i.fas.fa-check-square{
+    display: none;
+}
+
+.display_item_menu ul.items_list li:not(selected).toselect i.far.fa-square{
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-left: -1em;
+}
+.display_item_menu ul.items_list li.selected i.fas.fa-check-square{
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-left: -1em;
+}
+
+.display_item_menu ul.items_list li.selected {
+background: rgb(248, 238, 101);
+}
+
+/*Settings' pop out menu and its buttons' shadow*/
+.display_item_menu ul.settings_pop_out{
+    position: absolute;
+    display: none;
+    left: 100px;
+    top: 10px;
+    width: 100px;
+    list-style-type: none;
+    background-color: rgb(181, 187, 174);
+    padding: 0px;
+    border-bottom: 5px;
+    border-left: 5px;
+    border-right: 5px;
+    z-index: 9999;
+}
+
+.display_item_menu ul.settings_pop_out li>input{
+    width: 100px;
+    padding: 0px;
+    font-size: 15px;
+    margin-bottom: 2px;
+    -moz-box-shadow:    2px 2px 2px 2px #ccc;
+    -webkit-box-shadow: 2px 2px 2px 2px #ccc;
+    box-shadow:         2px 2px 2px 2px #ccc;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="css/listItemDiv.css" rel="stylesheet">
+<script src="./dist/main_interp.js"></script>
+
+<div class="display_item_menu">
+    <p class="title">Display Item List</p>
+
+    <div class="info">
+        <i class="fas fa-info-circle"></i>
+        <span class="extra-info"><b>Dispaly Item List</b> is for manipulating the display items.
+            You can do actions like <i><b>Drag</b></i>, <i><b>Hide</b></i>,
+            <i><b>Show All</b></i>, <i><b>Delete</b></i> on items.
+            For dragging, please directly use your computer mouse to drag them. For the later three actions,
+            click the right <b>Actions</b> button. <span style="color:red"><b>NOTE </b></span>
+            that the <i><b>Delete</b></i> action will delete items from the remote
+            server, so please use <i><b>Delete</b></i> when only necessary.</span>
+    </div>
+
+    <input type="button" class="div_button settings_button" value="Actions">
+    <input type="button" class="div_button action_button" value="OPTION">
+    <input type="button" class="div_button cancel_button" value="Cancel">
+
+
+    <ul class="settings_pop_out">
+        <li><input type="button" value="Hide"></li>
+        <li><input type="button" value="Show All"></li>
+        <li><input type="button" value="Delete" style="margin-bottom: -5px;"></li>
+    </ul>
+
+    <div class="scrollable_content">
+        <ul class="items_list">
+            <li><i class="far fa-square"></i><i class="fas fa-check-square"></i>Star</li>
+            <li><i class="far fa-square"></i><i class="fas fa-check-square"></i>Banana</li>
+            <li><i class="far fa-square"></i><i class="fas fa-check-square"></i>Orange</li>
+            <li><i class="far fa-square"></i><i class="fas fa-check-square"></i>Peach</li>
+            <li><i class="far fa-square"></i><i class="fas fa-check-square"></i>Peach</li>
+            <li><i class="far fa-square"></i><i class="fas fa-check-square"></i>Peach</li>
+            <li><i class="far fa-square"></i><i class="fas fa-check-square"></i>Peach</li>
+        </ul>
+    </div>
+</div>

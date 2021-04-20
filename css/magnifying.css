@@ -1,0 +1,27 @@
+div.input_div{
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+    padding: 0px;
+}
+
+div.input_div p:hover{
+    cursor: cell;
+}
+
+div.input_div input{
+    border: 2px solid;
+}
+
+div.input_div canvas{
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    margin: 0px;
+    padding: 0px;
+    border: 2px solid #000000;
+    backface-visibility: hidden;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
