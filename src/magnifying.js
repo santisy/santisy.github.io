@@ -1,23 +1,32 @@
 function moveAndDrawOnImage(ratio_, div, e, x = -1, y = -1){
     var mov_ele = div.getElementsByTagName("canvas")[0];
     var input_ele = div.getElementsByTagName("input")[0];
+    var cH = input_ele.clientWidth;
+    var cW = input_ele.clientHeight;
+    var p_size = div.p_size
+
     if (x < 0 && y < 0){
-        var x = e.pageX - div.offsetLeft - input_ele.clientLeft;
-        var y = e.pageY - div.offsetTop - input_ele.clientTop;
+        //var x = e.pageX - div.offsetLeft - input_ele.clientLeft;
+        //var y = e.pageY - div.offsetTop - input_ele.clientTop;
+        var x = e.offsetX;
+        var y = e.offsetY;
+        console.log(x, y);
     }
-    if (x < input_ele.clientWidth && y < input_ele.clientHeight
-        && x > 0 && y > 0
-        ){
+    if (x < cW && y < cH && x > 0 && y > 0){
 
         // Redraw according to the new location
-        let x_start = x - div.p_size / 2
-        let y_start = y - div.p_size / 2
-        div.x_s = x_start = x_start > 0 ? x_start : 0
-        div.y_s = y_start = y_start > 0 ? y_start : 0
+        let x_start = x - p_size / 2
+        let y_start = y - p_size / 2
+
+        x_start = x_start + p_size > cW ? cW - p_size : x_start;
+        y_start = y_start + p_size > cH ? cH - p_size : y_start;
+
+        div.x_s = x_start = x_start > 0 ? x_start : 0;
+        div.y_s = y_start = y_start > 0 ? y_start : 0;
         let context = mov_ele.getContext('2d')
         context.drawImage(div.imageObj,
             Math.fround(x_start * ratio_), Math.fround(y_start * ratio_),
-            Math.fround(div.p_size * ratio_), Math.fround(div.p_size * ratio_),
+            Math.fround(p_size * ratio_), Math.fround(p_size * ratio_),
             0, 0,
             div.dis_size, div.dis_size);
         // Move the canvas

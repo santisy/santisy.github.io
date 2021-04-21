@@ -1,6 +1,8 @@
 .mag_div_list {
     display: inline-block;
+    position: absolute;
     width: 800px;
+    top: 10px;
 }
 
 .mag_div_list .input_div{
