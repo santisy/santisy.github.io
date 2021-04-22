@@ -63,71 +63,90 @@ function scrollAndResize(ratio_, div, e, orig_p_size, p_size = -1){
 }
 
 // Main function
-function magnifyingDiv(mag_div_list, p_size = 50, dis_size = 60){
+function magnifyingDiv(mag_div, 
+    p_size = 50,        // The patch size on the original image (scaled to canvas)
+    dis_size = 60,      // Display size (The magnifying glass size)
+    input_width = 200,  // The input full image canvas width
+    ){
     // Magnifying Variables, both are adjustable
     this.p_size = p_size;  // The patch size
     this.dis_size = dis_size;  // The resized size (the fixed magnifying glass size)
     var ratio_ = 0;
+    this.mag_div = mag_div;
 
-    // Generate and attach to each of them
-    for (var i=0; i<mag_div_list.length; i++){
-        var mag_div = mag_div_list[i];
+    this.drawInputCanvas = function(){
+        var mag_div_list = this.mag_div.querySelectorAll(".input_div");
+        // Generate and attach to each of them
+        for (var i=0; i<mag_div_list.length; i++){
+            var mag_div = mag_div_list[i];
 
-        var mov_id = new String(i)+"mov_p";
-        var canvas = Object.assign(document.createElement("canvas"), {"id": mov_id})
-        // Canvas width and height setting are important
-        canvas.width = dis_size
-        canvas.height = dis_size
+            var mov_id = new String(i)+"mov_p";
+            var canvas = Object.assign(document.createElement("canvas"), {"id": mov_id})
+            // Canvas width and height setting are important
+            canvas.width = dis_size
+            canvas.height = dis_size
 
-        var input_ele = mag_div.getElementsByTagName("input")[0]
-        var input_src = input_ele.src;
-        var imageObj = new Image();
-        imageObj.src = input_src;
-        if (imageObj.width != ""){ // Should think this through if the image does not exist
-            ratio_ = imageObj.width / 200; // TODO:
-            //p_size = Math.fround(this.ratio_ * p_size);
+            var input_ele = mag_div.getElementsByTagName("input")[0]
+            var input_src = input_ele.src;
+            var imageObj = new Image();
+            imageObj.src = input_src;
+            if (imageObj.width != ""){ // Should think this through if the image does not exist
+                ratio_ = imageObj.width / input_width; // TODO:
+                //p_size = Math.fround(this.ratio_ * p_size);
+            }
+            let context = canvas.getContext('2d');
+
+            imageObj.onload = function() {
+                // Draw cropped image
+                var sourceX = 100 - p_size / 2;
+                var sourceY = 100 - p_size / 2;
+                var sourceWidth = p_size;
+                var sourceHeight = p_size;
+                var destX = 0;
+                var destY = 0;
+                var destWidth = dis_size;
+                var destHeight = dis_size;
+
+                context.drawImage(imageObj, 
+                    Math.fround(sourceX * this.ratio_), Math.fround(sourceY * this.ratio_),
+                    Math.fround(sourceWidth * this.ratio_), Math.fround(sourceHeight * this.ratio_),
+                    destX, destY, 
+                    destWidth, destHeight);
+            };
+            mag_div.appendChild(canvas);
+
+            // Initial sizes and image object
+            mag_div.dis_size = dis_size
+            mag_div.p_size = p_size
+            mag_div.imageObj = imageObj
+
+            // Move the magnifying glasses
+            mag_div.addEventListener("mousemove", function(e){
+                let start_coord = moveAndDrawOnImage(ratio_, this, e);
+                for (var j = 0; j < mag_div_list.length; j++){
+                    moveAndDrawOnImage(ratio_, mag_div_list[j], e, start_coord[0], start_coord[1]);
+                }
+            })
+
+            // Scroll the wheel to resize image
+            mag_div.addEventListener("mousewheel", function(e){
+                let new_p_size = scrollAndResize(ratio_, this, e, p_size);
+                for (var j = 0; j < mag_div_list.length; j++){
+                    scrollAndResize(ratio_, mag_div_list[j], e, p_size, new_p_size);
+                }
+            }, {passive: true})
         }
-        let context = canvas.getContext('2d');
+    }
 
-        imageObj.onload = function() {
-            // Draw cropped image
-            var sourceX = 100 - p_size / 2;
-            var sourceY = 100 - p_size / 2;
-            var sourceWidth = p_size;
-            var sourceHeight = p_size;
-            var destX = 0;
-            var destY = 0;
-            var destWidth = dis_size;
-            var destHeight = dis_size;
-
-            context.drawImage(imageObj, 
-                Math.fround(sourceX * this.ratio_), Math.fround(sourceY * this.ratio_),
-                Math.fround(sourceWidth * this.ratio_), Math.fround(sourceHeight * this.ratio_),
-                destX, destY, 
-                destWidth, destHeight);
-        };
-        mag_div.appendChild(canvas);
-
-        // Initial sizes and image object
-        mag_div.dis_size = dis_size
-        mag_div.p_size = p_size
-        mag_div.imageObj = imageObj
-
-        // Move the magnifying glasses
-        mag_div.addEventListener("mousemove", function(e){
-            let start_coord = moveAndDrawOnImage(ratio_, this, e);
-            for (var j = 0; j < mag_div_list.length; j++){
-                moveAndDrawOnImage(ratio_, mag_div_list[j], e, start_coord[0], start_coord[1]);
-            }
-        })
-
-        // Scroll the wheel to resize image
-        mag_div.addEventListener("mousewheel", function(e){
-            let new_p_size = scrollAndResize(ratio_, this, e, p_size);
-            for (var j = 0; j < mag_div_list.length; j++){
-                scrollAndResize(ratio_, mag_div_list[j], e, p_size, new_p_size);
-            }
-        }, {passive: true})
+    this.reattachImageObj = function(){
+        var mag_div_list = this.mag_div.querySelectorAll(".input_div");
+        for (var i=0; i<mag_div_list.length; i++){
+            var mag_div = mag_div_list[i];
+            var input_ele = mag_div.getElementsByTagName("input")[0]
+            var imageObj = new Image();
+            imageObj.src = input_ele.src;
+            mag_div.imageObj = imageObj;
+        }
     }
 }
 
