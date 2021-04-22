@@ -7,11 +7,24 @@
 
 <div class="mag_bundle">
     <div class="display_item_menu"> <!--Display Item Menu, to manipulate which experiments to be compared -->
-        <p class="title">Display Item List</p>
+        <div class="title">standard_test_2021
+            <input class="title_button" type="button" value="">
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </div>
 
+        <!-- Action Buttons -->
+        <input type="button" class="div_button settings_button" value="Actions">
+        <input type="button" class="div_button action_button" value="OPTION">
+        <input type="button" class="div_button cancel_button" value="Cancel">
+
+        <!-- Infomation label for the information -->
         <div class="info">
             <i class="fas fa-info-circle"></i>
-            <span class="extra-info"><b>Dispaly Item List</b> is for manipulating the display items.
+            <span class="extra-info"> This is a <b>Dispaly Item List</b> for manipulating the display items.
                 You can do actions like <i><b>Drag</b></i>, <i><b>Hide</b></i>,
                 <i><b>Show All</b></i>, <i><b>Delete</b></i> on items.
                 For dragging, please directly use your computer mouse to drag them. For the later three actions,
@@ -20,10 +33,11 @@
                 server, so please use <i><b>Delete</b></i> when only necessary.</span>
         </div>
 
-        <input type="button" class="div_button settings_button" value="Actions">
-        <input type="button" class="div_button action_button" value="OPTION">
-        <input type="button" class="div_button cancel_button" value="Cancel">
-
+        <!-- Which image to be compared -->
+        <select name="image_name" id="image_name_select">
+            <option>01_what_is_this_on.jpg</option>
+            <option>image2.jpg</option>
+        </select>
 
         <ul class="settings_pop_out">
             <li><input type="button" value="Hide"></li>

@@ -10,12 +10,65 @@
   transition: all .4s ease;
 }
 
+/*The overall titile style property*/
+.display_item_menu div.title{
+  display: inline-block;
+  position: relative;
+  padding: 5px;
+  margin: 5px;
+  font-size: 20px;
+  font-family: sans-serif;
+  text-align: left;
+  font-weight: bold;
+}
+
+.display_item_menu >.title .title_button{
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(255,255,255, 0.4);
+}
+
+.display_item_menu >.title:hover .title_button{
+  display: block;
+  border-width: 2px;
+  border-radius: 5px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.display_item_menu .title .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.display_item_menu .title .dropdown-content a {
+  color: black;
+  font-size: 14px;
+  padding: 4px 6px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.display_item_menu .title .dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.display_item_menu .title:hover .dropdown-content {display: block;}
+
 /*Infomation style*/
 .display_item_menu >.info {
   display: inline-block;
   position: absolute;
   top: 10px;
-  left: 170px;
+  /*left: 170px;*/
   font-size: 14px;
   font-family: sans-serif;
   padding-left: 5px;
@@ -60,19 +113,11 @@
 display: inline;
 }
 
-
-/*The overall titile style property*/
-.display_item_menu p.title{
-  position: aboslute;
-  margin: 5px;
-  display: inline-block;
-  padding: 5px;
-  font-size: 20px;
-  font-family: sans-serif;
-  text-align: left;
-  font-weight: bold;
+.display_item_menu #image_name_select{
+  margin-left: 10px;
+  padding: 4px;
 }
-  
+
 /*The setting button and other buttons' property*/
 .display_item_menu input.div_button{
     margin-right: 5px;
@@ -93,6 +138,7 @@ display: inline;
     margin-left: 20px;
 }
 
+/**/
 
 /*Basic style of item list */
 .display_item_menu ul.items_list{
