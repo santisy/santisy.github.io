@@ -1,10 +1,6 @@
-const itemList = require("./src/listItemDiv").itemList;
-const magnifyingDiv = require("./src/magnifying").magnifyingDiv;
+const magBundle = require("./src/magBundle").magBundle
 
 window.onload = function(){
-    var items_div = this.document.getElementsByClassName("display_item_menu")[0];
-    var item_list = new itemList(items_div); // The item list methods instance
-
-    var mag_div_list = this.document.querySelectorAll(".mag_div_list .input_div");
-    var magnifying_div = new magnifyingDiv(mag_div_list, 50, 60);
+    var mag_bundle_div = document.getElementsByClassName("mag_bundle")[0];
+    var mag_bundle = new magBundle(mag_bundle_div);
 }

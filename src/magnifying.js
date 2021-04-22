@@ -10,7 +10,6 @@ function moveAndDrawOnImage(ratio_, div, e, x = -1, y = -1){
         //var y = e.pageY - div.offsetTop - input_ele.clientTop;
         var x = e.offsetX;
         var y = e.offsetY;
-        console.log(x, y);
     }
     if (x < cW && y < cH && x > 0 && y > 0){
 
