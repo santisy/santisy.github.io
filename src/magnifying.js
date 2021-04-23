@@ -1,8 +1,8 @@
 function moveAndDrawOnImage(ratio_, div, e, x = -1, y = -1){
     var mov_ele = div.getElementsByTagName("canvas")[0];
     var input_ele = div.getElementsByTagName("input")[0];
-    var cH = input_ele.clientWidth;
-    var cW = input_ele.clientHeight;
+    var cH = input_ele.height;
+    var cW = input_ele.width;
     var p_size = div.p_size
 
     if (x < 0 && y < 0){
@@ -23,8 +23,8 @@ function moveAndDrawOnImage(ratio_, div, e, x = -1, y = -1){
         div.y_s = y_start = y_start > 0 ? y_start : 0;
         let context = mov_ele.getContext('2d')
         context.drawImage(div.imageObj,
-            Math.fround(x_start * ratio_[0]), Math.fround(y_start * ratio_[1]),
-            Math.fround(p_size * ratio_[0]), Math.fround(p_size * ratio_[1]),
+            Math.fround(x_start * ratio_), Math.fround(y_start * ratio_),
+            Math.fround(p_size * ratio_), Math.fround(p_size * ratio_),
             0, 0,
             div.dis_size, div.dis_size);
         // Move the canvas
@@ -60,8 +60,8 @@ function scrollAndResize(ratio_, div, e, orig_p_size, p_size = -1){
 
     let context = mov_ele.getContext('2d');
     context.drawImage(div.imageObj,
-        Math.fround(div.x_s * ratio_[0]), Math.fround(div.y_s * ratio_[1]),
-        Math.fround(div.p_size * ratio_[0]), Math.fround(div.p_size * ratio_[1]),
+        Math.fround(div.x_s * ratio_), Math.fround(div.y_s * ratio_),
+        Math.fround(div.p_size * ratio_), Math.fround(div.p_size * ratio_),
         0, 0,
         div.dis_size, div.dis_size);
 
@@ -76,7 +76,7 @@ function magnifyingDiv(mag_div,
     // Magnifying Variables, both are adjustable
     this.p_size = p_size;  // The patch size
     this.dis_size = dis_size;  // The resized size (the fixed magnifying glass size)
-    var ratio_ = [1, 1];
+    var ratio_ = 1;
     this.mag_div = mag_div;
 
     this.drawInputCanvas = function(){
@@ -116,12 +116,12 @@ function magnifyingDiv(mag_div,
             mag_div.appendChild(canvas);
             imageObj.src = input_src;
 
-            if (i == 0){setInterval(
+            if (i == 0){var inter = setInterval(
                 function(){
                     if(imageObj.width != 0){
-                        ratio_[0] = imageObj.width / input_ele.width; // ratio: x
-                        ratio_[1] = imageObj.height / input_ele.height; // ratio: x
-                        stop();
+                        ratio_ = imageObj.width / input_ele.width; // ratio: x
+                        console.log(ratio_);
+                        clearInterval(inter);
                     }
                 }
                 , 200)
@@ -158,12 +158,12 @@ function magnifyingDiv(mag_div,
             //var imageObj = new Image();
             //delete mag_div.imageObj;
             mag_div.imageObj.src = input_ele.src;
-            if (i == 0){setInterval(
+            if (i == 0){var inter = setInterval(
                 function(){
                     if(mag_div.imageObj.width != 0){
-                        ratio_[0] = mag_div.imageObj.width / input_ele.width; // ratio: x
-                        ratio_[1] = mag_div.imageObj.height / input_ele.height; // ratio: x
-                        stop();
+                        ratio_ = mag_div.imageObj.width / input_ele.width; // ratio: x
+                        console.log(ratio_);
+                        clearInterval(inter);
                     }
                 }, 200);
             }
