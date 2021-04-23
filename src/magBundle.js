@@ -42,8 +42,10 @@ function magBundle(bundle_div){
         var text = exp_names[0][i];
         var li = document.createElement("li");
 
-        var e_i_1 = Object.assign(document.createElement("i"), {"class": "far fa-square"});
-        var e_i_2 = Object.assign(document.createElement("i"), {"class": "fas fa-check-square"});
+        var e_i_1 = document.createElement("i");
+        e_i_1.classList.add("far", "fa-square");
+        var e_i_2 = document.createElement("i");
+        e_i_2.classList.add("fas", "fa-check-square");
         var e_text = document.createTextNode(text);
         li.append(e_i_1, e_i_2, e_text);
 
@@ -51,7 +53,7 @@ function magBundle(bundle_div){
 
         // ---------- Initialize the canvas ----------
         var div_e = document.createElement("div");
-        div_e.classList.toggle("input_div");
+        div_e.classList.add("input_div");
         var input_e = Object.assign(document.createElement("input"), 
             {"type": "image", 
             "src": images_names[0][0]}
@@ -59,7 +61,7 @@ function magBundle(bundle_div){
         div_e.appendChild(input_e);
         mag_div_e.appendChild(div_e);
     }
-    magnifying_div.drawInputCanvas();
+    magnifying_div.drawInputCanvas(); // Initialize input canvas
 
 
     // Two main div
@@ -80,6 +82,8 @@ function magBundle(bundle_div){
             }
         }
     );
+
+    this.exp_list.clearChildren();
 }
 
 export {magBundle};

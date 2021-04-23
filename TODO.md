@@ -1,0 +1,4 @@
+- [x] Dataset change on-site button and dropdown List
+  - [x] When selecting different images, change the canvas paint
+  - [ ] Change the item-list content, image-drop down list content and canvas content when change dataset
+  - [ ] Add Label to Each canvas

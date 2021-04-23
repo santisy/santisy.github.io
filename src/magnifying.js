@@ -71,7 +71,7 @@ function magnifyingDiv(mag_div,
     // Magnifying Variables, both are adjustable
     this.p_size = p_size;  // The patch size
     this.dis_size = dis_size;  // The resized size (the fixed magnifying glass size)
-    var ratio_ = 0;
+    var ratio_ = 1.5;
     this.mag_div = mag_div;
 
     this.drawInputCanvas = function(){
@@ -89,11 +89,6 @@ function magnifyingDiv(mag_div,
             var input_ele = mag_div.getElementsByTagName("input")[0]
             var input_src = input_ele.src;
             var imageObj = new Image();
-            imageObj.src = input_src;
-            if (imageObj.width != ""){ // Should think this through if the image does not exist
-                ratio_ = imageObj.width / input_width; // TODO:
-                //p_size = Math.fround(this.ratio_ * p_size);
-            }
             let context = canvas.getContext('2d');
 
             imageObj.onload = function() {
@@ -108,12 +103,17 @@ function magnifyingDiv(mag_div,
                 var destHeight = dis_size;
 
                 context.drawImage(imageObj, 
-                    Math.fround(sourceX * this.ratio_), Math.fround(sourceY * this.ratio_),
-                    Math.fround(sourceWidth * this.ratio_), Math.fround(sourceHeight * this.ratio_),
+                    Math.fround(sourceX * ratio_), Math.fround(sourceY * ratio_),
+                    Math.fround(sourceWidth * ratio_), Math.fround(sourceHeight * ratio_),
                     destX, destY, 
                     destWidth, destHeight);
             };
             mag_div.appendChild(canvas);
+            imageObj.src = input_src;
+            if (imageObj.width != ""){ // Should think this through if the image does not exist
+                ratio_ = imageObj.width / input_ele.width; // TODO:
+                //p_size = Math.fround(this.ratio_ * p_size);
+            }
 
             // Initial sizes and image object
             mag_div.dis_size = dis_size
