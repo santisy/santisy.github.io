@@ -83,7 +83,7 @@ function magBundle(bundle_div){
         }
     );
 
-    this.exp_list.clearChildren();
+    //this.exp_list.clearChildren();
 }
 
 export {magBundle};

@@ -12,7 +12,6 @@ function moveAndDrawOnImage(ratio_, div, e, x = -1, y = -1){
         var y = e.offsetY;
     }
     if (x < cW && y < cH && x > 0 && y > 0){
-
         // Redraw according to the new location
         let x_start = x - p_size / 2
         let y_start = y - p_size / 2
@@ -38,19 +37,26 @@ function moveAndDrawOnImage(ratio_, div, e, x = -1, y = -1){
 
 function scrollAndResize(ratio_, div, e, orig_p_size, p_size = -1){
     var mov_ele = div.getElementsByTagName("canvas")[0];
+    var x_c = div.x_s + div.p_size / 2;
+    var y_c = div.y_s + div.p_size / 2;
 
     // The change ratio defined by mousewheel
     if (p_size < 0){
-        var size_change = - Math.fround(e.deltaY / 100);
+        var size_change = - Math.fround(e.deltaY / 50);
         if (size_change > 0){
             div.p_size = div.p_size * Math.abs(size_change);
         }
-        else {div.p_size = div.p_size * 1. / Math.abs(size_change);}
-        // The range
+        else {div.p_size = div.p_size * 1. / (Math.abs(size_change) + 1e-5);}
+        // Zoom upper and lower limit
         if (div.p_size < orig_p_size / 2) {div.p_size = orig_p_size / 2;}
         else if(div.p_size > orig_p_size * 1.5){div.p_size = orig_p_size * 1.5;}
     }
     else {div.p_size = p_size;}
+
+    let x_start = x_c - div.p_size / 2;
+    let y_start = y_c - div.p_size / 2;
+    div.x_s = x_start > 0 ? x_start : 0;
+    div.y_s = y_start > 0 ? y_start : 0;
 
     let context = mov_ele.getContext('2d');
     context.drawImage(div.imageObj,
@@ -71,7 +77,7 @@ function magnifyingDiv(mag_div,
     // Magnifying Variables, both are adjustable
     this.p_size = p_size;  // The patch size
     this.dis_size = dis_size;  // The resized size (the fixed magnifying glass size)
-    var ratio_ = 1.5;
+    var ratio_ = 1;
     this.mag_div = mag_div;
 
     this.drawInputCanvas = function(){
@@ -110,9 +116,14 @@ function magnifyingDiv(mag_div,
             };
             mag_div.appendChild(canvas);
             imageObj.src = input_src;
-            if (imageObj.width != ""){ // Should think this through if the image does not exist
-                ratio_ = imageObj.width / input_ele.width; // TODO:
-                //p_size = Math.fround(this.ratio_ * p_size);
+
+            if (i == 0){
+                this.watchRatio = setInterval(function(){
+                   if(imageObj.width != 0){
+                       ratio_ = imageObj.width / input_ele.width; 
+                       stop();
+                   }
+                }, 200)
             }
 
             // Initial sizes and image object

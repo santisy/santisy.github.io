@@ -10,4 +10,9 @@ module.exports = {
   },
   resolve: {},
   module: {},
+  watch: true,
+  watchOptions: {
+    aggregateTimeout: 600,
+    poll: 100
+  },
 };
