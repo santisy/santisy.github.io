@@ -6,13 +6,13 @@ function magBundle(bundle_div){
     var mag_div_e = document.querySelector(".mag_div_list");
     var items_div = bundle_div.querySelector(".mag_bundle >.display_item_menu");
     // Initialize the magnifying classes and methods
-    var magnifying_div = new magnifyingDiv(mag_div_e, 50, 60, 200);
+    var magnifying_div = new magnifyingDiv(mag_div_e, 50, 70);
 
     var dataset_index = 0;
     var image_index = 0;
 
     var dataset_names = ["dataset1", "dataset2", "dataset3"];
-    var images_names = [["imgs/01.jpg", "imgs/02.jpg"], ["imgs/01.jpg"], ["imgs/02.jpg"]];
+    var images_names = [["imgs/01.jpg", "imgs/02.jpg", "imgs/03.jpg"], ["imgs/01.jpg"], ["imgs/02.jpg"]];
     var exp_names = [["exp01", "exp02"], ["exp01"], ["exp_02"]];
 
     this.dataset_list = bundle_div.querySelector(".title .dropdown-content"); // The dataset (at title) dropdown menu

@@ -1,14 +1,12 @@
 .mag_div_list {
     display: inline-block;
     position: absolute;
-    width: 800px;
     top: 10px;
 }
 
 .mag_div_list .input_div{
     position: relative;
     display: inline-block;
-    width: 200px;
     margin: 20px;
     padding: 0px;
 }
@@ -18,7 +16,7 @@
 }
 
 .mag_div_list .input_div input{
-    width: 200px;
+    width: 250px;
     border: 2px solid;
 }
 
