@@ -1,10 +1,3 @@
-import {Sortable, MultiDrag} from 'sortablejs'
-Sortable.mount(new MultiDrag());
-//window.onload = function(){
-//    var items_div = this.document.getElementsByClassName("display_item_menu")[0];
-//    var item_list = new itemList(items_div); // The item list methods instance
-//}
-
 function itemList(e){
     // e is the outmost div element of predefined `Item List`
     this.selectedItems = new Array();
@@ -13,16 +6,6 @@ function itemList(e){
     this.action = "";
     this.enable_selecting = false;
 
-    // Draggable main list
-    new Sortable(this.ul_e, {
-        onStart: function(evt){
-            evt.item.classList.toggle("dragged");
-        },
-        onEnd: function(evt){
-            evt.item.classList.toggle("dragged");
-        }.bind(this)
-        }
-    );
 
     // Buttons
     this.settings_button = e.querySelector("input.settings_button");
