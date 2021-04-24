@@ -12,7 +12,7 @@ function magBundle(bundle_div){
     var image_index = 0;
 
     var dataset_names = ["dataset1", "dataset2", "dataset3"];
-    var images_names = [["imgs/01.jpg", "imgs/02.jpg", "imgs/03.jpg"], ["imgs/01.jpg"], ["imgs/02.jpg"]];
+    var images_names = [["01.jpg", "02.jpg", "03.jpg"], ["01.jpg"], ["02.jpg"]];
     var exp_names = [["exp01", "exp02"], ["exp01"], ["exp_02"]];
 
     this.dataset_list = bundle_div.querySelector(".title .dropdown-content"); // The dataset (at title) dropdown menu

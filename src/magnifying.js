@@ -120,7 +120,6 @@ function magnifyingDiv(mag_div,
                 function(){
                     if(imageObj.width != 0){
                         ratio_ = imageObj.width / input_ele.width; // ratio: x
-                        console.log(ratio_);
                         clearInterval(inter);
                     }
                 }
@@ -162,7 +161,6 @@ function magnifyingDiv(mag_div,
                 function(){
                     if(mag_div.imageObj.width != 0){
                         ratio_ = mag_div.imageObj.width / input_ele.width; // ratio: x
-                        console.log(ratio_);
                         clearInterval(inter);
                     }
                 }, 200);
