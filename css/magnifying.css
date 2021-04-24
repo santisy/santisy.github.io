@@ -11,6 +11,14 @@
     padding: 0px;
 }
 
+.mag_div_list .input_div .img_name_tag{
+    position: absolute;
+    top: 0;
+    font-family: sans-serif;
+    font-size: 15px;
+    background-color: #dbd598;
+}
+
 .mag_div_list .input_div p:hover{
     cursor: cell;
 }
