@@ -1,5 +1,7 @@
 const itemList = require("./listItemDiv").itemList;
 const magnifyingDiv = require("./magnifying").magnifyingDiv;
+import {Sortable, MultiDrag} from 'sortablejs'
+//Sortable.mount(new MultiDrag());
 
 function magBundle(bundle_div){
     // TODO where does this come from? How to communicate with server
@@ -9,11 +11,13 @@ function magBundle(bundle_div){
     var magnifying_div = new magnifyingDiv(mag_div_e, 50, 70);
 
     var dataset_index = 0;
-    var image_index = 0;
+    var img_index = 0;
 
     var dataset_names = ["dataset1", "dataset2", "dataset3"];
-    var images_names = [["01.jpg", "02.jpg", "03.jpg"], ["01.jpg"], ["02.jpg"]];
-    var exp_names_list = [["exp01", "exp02"], ["exp01"], ["exp_02"]];
+    var img_paths_list = [[["exp01/01.jpg", "exp01/03.jpg"], ["exp02/01.jpg", "exp02/03.jpg"]], 
+            [["exp01/01.jpg"]], ["exp02/02.jpg"]];
+    var img_names = [["01.jpg", "03.jpg"], ["01.jpg"], ["02.jpg"]]; // maximum common names
+    var exp_names_list = [["exp01", "exp02"], ["exp01"], ["exp02"]];
 
     this.dataset_list = bundle_div.querySelector(".title .dropdown-content"); // The dataset (at title) dropdown menu
     this.title = bundle_div.querySelector(".title").childNodes[0];
@@ -30,9 +34,9 @@ function magBundle(bundle_div){
     }
     this.title.nodeValue = dataset_names[0];
     // Initialize the image dropdown
-    for (var i = 0; i < images_names[0].length; i++){
+    for (var i = 0; i < img_names[0].length; i++){
         var option = document.createElement("option");
-        option.text = images_names[0][i];
+        option.text = img_names[0][i];
         this.image_select_e.add(option);
     }
     // Initialize the exp list and the canvas
@@ -57,13 +61,14 @@ function magBundle(bundle_div){
 
         // Image tag on top of the display overall
         var img_name_tag = document.createElement("div");
+        var img_path = img_paths_list[0][i][0];
         img_name_tag.classList.add("img_name_tag");
-        img_name_tag.innerHTML = exp_names_list[0][i] + ": "  + images_names[0][0];
+        img_name_tag.innerHTML = exp_names_list[0][i] + ": "  + img_path.split("/").pop();
 
         // Display overall
         var input_e = Object.assign(document.createElement("input"), 
             {"type": "image", 
-            "src": images_names[0][0]}
+            "src": img_path}
             )
         div_e.append(img_name_tag, input_e);
         mag_div_e.appendChild(div_e);
@@ -71,29 +76,41 @@ function magBundle(bundle_div){
     magnifying_div.drawInputCanvas(); // Initialize input canvas
 
 
-    // Two main div
+    // Redisplay the canvas and change the tags when changing images, exp order, or datasets
+    function reDisplay(index_now){
+        var input_canvas = mag_div_e.querySelectorAll("input");
+        var img_name_tags = mag_div_e.querySelectorAll(".img_name_tag");
+        for (var i = 0; i < input_canvas.length; i++){
+            input_canvas[i].src = img_paths_list[dataset_index][i][index_now];
+            img_name_tags[i].innerHTML = img_name_tags[i].innerHTML.split(":")[0] + ": " 
+                    + img_paths_list[dataset_index][i][index_now].split("/").pop();
+        }
+        magnifying_div.reattachImageObj();
+    }
+
+    // item list instance initialization
     this.item_list = new itemList(items_div); // The item list methods instance
 
-
-    // Change input images
+    // Draggable item list
+    new Sortable(this.item_list.ul_e, {
+        onStart: function(evt){
+            evt.item.classList.toggle("dragged");
+        },
+        onEnd: function(evt){
+            evt.item.classList.toggle("dragged");
+            reDisplay(img_index);
+        }
+    }
+    )
+    // Redisplay when change image
     this.image_select_e.addEventListener("input", function(){
             var img_index_now = this.selectedIndex;
-            if (img_index_now != image_index){
-                // Change image src
-                image_index = img_index_now;
-                var input_canvas = mag_div_e.querySelectorAll("input");
-                var img_name_tags = mag_div_e.querySelectorAll(".img_name_tag");
-                for (var i = 0; i < input_canvas.length; i++){
-                    input_canvas[i].src = images_names[dataset_index][img_index_now];
-                    img_name_tags[i].innerHTML = img_name_tags[i].innerHTML.split(":")[0] +
-                         ": " + images_names[dataset_index][img_index_now];
-                }
-                magnifying_div.reattachImageObj();
+            if (img_index_now != img_index){
+                img_index = img_index_now;
+                reDisplay(img_index_now);
             }
         }
     );
-
-    //this.exp_list.clearChildren();
 }
 
 export {magBundle};

@@ -1,7 +1,8 @@
 - [x] Dataset change on-site button and dropdown List
   - [x] When selecting different images, change the canvas paint
   - [ ] Change the item-list content, image-drop down list content and canvas content when change dataset
-  - [ ] Add Label to Each canvas
+  - [x] Add Label to Each canvas
+  - [ ] Change the display content when dragging exps (**DOING, still has some problems**)
 - [ ] Server side issue: dataset base management, image uploading and image retrieving
   - [x] Image retrieving useing express static image serving has been done.
   - [ ] Database management
