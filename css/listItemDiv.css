@@ -6,9 +6,11 @@
     top: 0px;
 }
 
+/*
 .display_item_menu *{
   transition: all .4s ease;
 }
+*/
 
 /*The overall titile style property*/
 .display_item_menu div.title{
@@ -64,7 +66,7 @@
 .display_item_menu .title:hover .dropdown-content {display: block;}
 
 /*Infomation style*/
-.display_item_menu >.info {
+.info {
   display: inline-block;
   position: absolute;
   top: 10px;
@@ -78,18 +80,18 @@
 
 .display_item_menu >.info >.fas.fa-info-circle{
   font-size: 10px;
-  position: absolute;
+  position: relative;
   top: -5px;
 }
 
-.display_item_menu >.info:hover >.fas.fa-info-circle{
+.info:hover >.fas.fa-info-circle{
   font-size: 10px;
-  position: absolute;
-  top: 10px;
+  position: relative;
+  top: 5px;
 }
 
 
-.display_item_menu >.info:hover {
+.info:hover {
   background-color: white;
   padding: 5px 0 0 5px;
   width: 300px;
@@ -101,7 +103,7 @@
   border-width: 1px;
 }
 
-.display_item_menu >.info >.extra-info {
+.info >.extra-info {
     position: absolute;
     display: none;
     line-height: 20px;
@@ -109,12 +111,12 @@
     left: 20px;
   }
   
-.display_item_menu >.info:hover >.extra-info {
+.info:hover .extra-info {
 display: inline;
 }
 
 .display_item_menu #image_name_select{
-  margin-left: 10px;
+  margin-left: 20px;
   padding: 4px;
 }
 

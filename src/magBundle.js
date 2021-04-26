@@ -85,7 +85,8 @@ function magBundle(bundle_div){
                 var img_name_tags = mag_div_e.querySelectorAll(".img_name_tag");
                 for (var i = 0; i < input_canvas.length; i++){
                     input_canvas[i].src = images_names[dataset_index][img_index_now];
-                    img_name_tags[i].innerHTML = img_name_tags[i].innerHTML.split(":")[0] + ": " + images_names[dataset_index][img_index_now];
+                    img_name_tags[i].innerHTML = img_name_tags[i].innerHTML.split(":")[0] +
+                         ": " + images_names[dataset_index][img_index_now];
                 }
                 magnifying_div.reattachImageObj();
             }

@@ -1,3 +1,38 @@
 .mag_bundle{
     position: relative;
+    font-family: sans-serif;
+}
+
+.mag_bundle .upload_div{
+    position: relative;
+    border: black;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style: solid;
+    width: 90%;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+.mag_bundle .upload_div .dataset_input{
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.mag_bundle .upload_div >.info >.fas.fa-info-circle{
+  font-size: 10px;
+  position: relative;
+  display: block;
+  top: 0px;
+}
+
+.mag_bundle .upload_div .upload_button{
+    display: block;
+    font-size: 14px; 
+    padding: 5px;
+    background:cadetblue;
+    border:darkcyan;
+    border-width: 2px;
+    margin-left: 0px;
 }

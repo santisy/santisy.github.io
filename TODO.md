@@ -6,3 +6,6 @@
   - [x] Image retrieving useing express static image serving has been done.
   - [ ] Database management
   - [ ] Image uploading
+    - [x] Client side uploading frame UI.
+    - [ ] Client side uploading information displaying (interact with server side, pop out window)
+    - [ ] Client side axios files and pre-process
