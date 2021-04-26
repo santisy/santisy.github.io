@@ -147,6 +147,7 @@ function itemList(e){
     }
     // Hide items
     this.hideItems = function(){
+        //var input_div_list = document.querySelectorAll(".mag_div_list .input_div");
         for (var i = 0; i < this.selectedItems.length; i++){
             this.selectedItems[i].style.setProperty("display", "none");
             this.selectedItems[i].classList.toggle("selected");

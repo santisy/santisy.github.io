@@ -2,7 +2,8 @@
   - [x] When selecting different images, change the canvas paint
   - [ ] Change the item-list content, image-drop down list content and canvas content when change dataset
   - [x] Add Label to Each canvas
-  - [ ] Change the display content when dragging exps (**DOING, still has some problems**)
+  - [x] Change the display content when dragging exps (**Problem FIXED**)
+  - [ ] Hide input_div when hide exp_item: have to rewrite the item list and revise the hide mechanism.
 - [ ] Server side issue: dataset base management, image uploading and image retrieving
   - [x] Image retrieving useing express static image serving has been done.
   - [ ] Database management
@@ -10,3 +11,5 @@
     - [x] Client side uploading frame UI.
     - [ ] Client side uploading information displaying (interact with server side, pop out window)
     - [ ] Client side axios files and pre-process
+- [ ] Bugs
+  - [ ] Magnifying sudden change bug
