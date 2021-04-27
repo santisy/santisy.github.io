@@ -9,6 +9,8 @@
   "author": "yangdingdong",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.5",
     "sortablejs": "^1.13.0"
   },
   "devDependencies": {
