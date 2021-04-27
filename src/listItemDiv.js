@@ -1,4 +1,4 @@
-function itemList(e){
+function itemList(e, sortable){
     // e is the outmost div element of predefined `Item List`
     this.selectedItems = new Array();
     this.hiddenItems = new Array();
@@ -6,6 +6,7 @@ function itemList(e){
     this.ul_pop = e.querySelector("ul.settings_pop_out")
     this.action = "";
     this.enable_selecting = false;
+    this.sortable = sortable;
 
 
     // Buttons
@@ -27,6 +28,7 @@ function itemList(e){
             ev.target != this.settings_button
             ){
             this.ul_pop.style.display = "none";
+            this.sortable.option("disabled", false);
         }
         }.bind(this)
     )
@@ -47,8 +49,7 @@ function itemList(e){
     }.bind(this), false);
 
     this.ul_pop.addEventListener('click', function(ev) {
-        if( ev.target.tagName == 'INPUT') {
-
+        if( ev.target.tagName == 'INPUT') {           
             // Change to appropriate selecting mode and style
             var li_list = this.ul_e.querySelectorAll("li");
             for (var i = 0; i < li_list.length; i++){
@@ -79,10 +80,12 @@ function itemList(e){
         // Pop out the menu
         if (this.ul_pop.style.display == "none"){
             this.ul_pop.style.display = "block";
+            this.sortable.option("disabled", true);
         }
         else if (this.ul_pop.style.display == "block"){
             this.ul_pop.style.display = "none";
             this.enable_selecting = false;
+            this.sortable.option("disabled", false);
         }
         }.bind(this)
     )
@@ -148,6 +151,12 @@ function itemList(e){
         this.action = '';
         this.selectedItems = []; // Clear selected items
         this.enable_selecting = false;
+        this.sortable.option("disabled", false);
+        // Re-hide the list item
+        var li_list = this.ul_e.querySelectorAll("li");
+        for (var i = 0; i < this.hiddenItems.length; i++){
+            li_list[this.hiddenItems[i]].style.setProperty("display", "none");
+        }
     }
     // Remove items
     this.removeItems = function(){
@@ -178,8 +187,8 @@ function itemList(e){
     }
     // Show all items
     this.showSelected = function(){
-        var li_list = this.ul_e.querySelectorAll("li");
         var input_div_list = document.querySelectorAll(".mag_div_list .input_div");
+        var li_list = this.ul_e.querySelectorAll("li");
         for (var i = 0; i < this.selectedItems.length; i++){
             // display canvas
             input_div_list[this.selectedItems[i]].style.setProperty("display", "inline-block");

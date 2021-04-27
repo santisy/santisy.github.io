@@ -17,8 +17,13 @@ window.onload = function(){
     var dir_upload = document.querySelector(".upload_button");
     var input_frame = document.querySelector(".dataset_input")
     dir_upload.addEventListener("input", function(){
-      console.log(this.files);
-      console.log(input_frame.value);
+      //TODO: 
+      // 1. Filter out the unqualified selected files (level and file type)
+      // 2. Go into FormData and ready to send via middle ware?
+      // 3. Verification?: the gt_names? or something
+      // 4. Information pop out
+      console.log(this.files); // The selected files under the folder
+      console.log(input_frame.value); // exp_names
       }
     )
 }

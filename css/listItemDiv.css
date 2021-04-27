@@ -171,7 +171,7 @@ display: inline;
  
 /*When hiding and temporarily showing to be selected*/
 .display_item_menu ul.items_list li.hide_show {
-    background-color: lightgray;
+    background-color: rgb(143, 142, 142);
     opacity: 0.5;
 }
 

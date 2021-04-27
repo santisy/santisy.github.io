@@ -99,11 +99,8 @@ function magBundle(bundle_div){
         magnifying_div.reattachImageObj();
     }
 
-    // item list instance initialization
-    this.item_list = new itemList(items_div); // The item list methods instance
-
     // Draggable item list
-    new Sortable(this.item_list.ul_e, {
+    var sortable = new Sortable(document.querySelector("ul.items_list"), {
         onStart: function(evt){
             evt.item.classList.toggle("dragged");
         },
@@ -113,6 +110,9 @@ function magBundle(bundle_div){
         }
     }
     )
+    // item list instance initialization
+    this.item_list = new itemList(items_div, sortable); // The item list methods instance
+
     // Redisplay when change image
     this.image_select_e.addEventListener("input", function(){
             var img_index_now = this.selectedIndex;
