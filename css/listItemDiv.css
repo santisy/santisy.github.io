@@ -165,8 +165,14 @@ display: inline;
 
 /*Item list while dragging*/
 .display_item_menu ul.items_list li.dragged {
-background-color: #3498eb;
-opacity: 0.7;
+    background-color: #3498eb;
+    opacity: 0.7;
+}
+ 
+/*When hiding and temporarily showing to be selected*/
+.display_item_menu ul.items_list li.hide_show {
+    background-color: lightgray;
+    opacity: 0.5;
 }
 
 /*li's selected and toselect status and logical relationship*/

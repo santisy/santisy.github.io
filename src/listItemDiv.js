@@ -1,6 +1,7 @@
 function itemList(e){
     // e is the outmost div element of predefined `Item List`
     this.selectedItems = new Array();
+    this.hiddenItems = new Array();
     this.ul_e = e.querySelector("ul.items_list");
     this.ul_pop = e.querySelector("ul.settings_pop_out")
     this.action = "";
@@ -32,28 +33,34 @@ function itemList(e){
     
     // Do all the `li` under `ul` add clicked and selected event
     this.ul_e.addEventListener('click', function(ev) {
-        if( ev.target.tagName === 'LI' && this.enable_selecting) {
+        if( ev.target.tagName === 'LI' && this.enable_selecting
+            && ev.target.classList.contains("toselect")) {
             ev.target.classList.toggle('selected');
             if (ev.target.classList.contains("selected")){
-                this.selectedItems.push(ev.target);
+                //this.selectedItems.push(ev.target);
+                this.selectedItems.push(ev.target.index);
             }
             else {
-                this.selectedItems.splice(this.selectedItems.indexOf(ev.target), 1);
+                this.selectedItems.splice(this.selectedItems.indexOf(ev.target.index), 1);
             }
         }
     }.bind(this), false);
 
     this.ul_pop.addEventListener('click', function(ev) {
         if( ev.target.tagName == 'INPUT') {
-            if (ev.target.value == "Show All"){
-                this.showItems();
-                return;
-            }
 
-            // Change to select mode
+            // Change to appropriate selecting mode and style
             var li_list = this.ul_e.querySelectorAll("li");
             for (var i = 0; i < li_list.length; i++){
-                li_list[i].classList.toggle("toselect");
+                if (ev.target.value == "Show" && this.hiddenItems.includes(i)
+                    || ev.target.value == "Hide" && !this.hiddenItems.includes(i)
+                    || ev.target.value == "Delete"){
+                    li_list[i].classList.toggle("toselect");
+                } 
+                if (this.hiddenItems.includes(i)){
+                    li_list[i].classList.toggle("hide_show");
+                    li_list[i].style.setProperty("display", "block");
+                }
             }
 
             this.enable_selecting = true;
@@ -109,10 +116,10 @@ function itemList(e){
             this.removeItems();
         }
         else if (this.action == "Hide"){
-            this.hideItems();
+            this.hideSelected();
         }
-        else if (this.action == "Show All"){
-            this.showItems();
+        else if (this.action == "Show"){
+            this.showSelected();
         }
         // Reset the status
         this.reset();
@@ -123,43 +130,65 @@ function itemList(e){
         // exit select mode
         var li_list = this.ul_e.querySelectorAll("li");
         for (var i = 0; i < li_list.length; i++){
-            li_list[i].classList.toggle("toselect");
+            var li_e = li_list[i];
+            if (li_e.classList.contains("toselect")){
+                li_e.classList.toggle("toselect");
+            }li_e
+            if (li_e.classList.contains("selected")){
+                li_e.classList.toggle("selected");
+            }li_e
+            if (li_e.classList.contains("hide_show")){
+                li_e.classList.toggle("hide_show");
+            }
         }
         // Other displaying
         this.settings_button.style.display = "inline-block";
         this.action_button.style.display = "none";
         this.cancel_button.style.display = "none";
-        //this.ul_pop.style.display = "none";
         this.action = '';
-        for (var i = 0; i < this.selectedItems.length; i++){
-            this.selectedItems[i].classList.toggle("selected");
-        }
         this.selectedItems = []; // Clear selected items
         this.enable_selecting = false;
     }
     // Remove items
     this.removeItems = function(){
         // TODO: 1. pop alert; 2. get to the server to remove related items
+        var li_list = this.ul_e.querySelectorAll("li");
         for (var i = 0; i < this.selectedItems.length; i++){
-            this.ul_e.removeChild(this.selectedItems[i]);
+            this.ul_e.removeChild(li_list[this.selectedItems[i]]);
         }
-        this.selectedItems = []; // Clear selected items
     }
     // Hide items
     this.hideItems = function(){
-        //var input_div_list = document.querySelectorAll(".mag_div_list .input_div");
-        for (var i = 0; i < this.selectedItems.length; i++){
-            this.selectedItems[i].style.setProperty("display", "none");
-            this.selectedItems[i].classList.toggle("selected");
+        var input_div_list = document.querySelectorAll(".mag_div_list .input_div");
+        var li_list = this.ul_e.querySelectorAll("li");
+        for (var i = 0; i < this.hiddenItems.length; i++){
+            // hide canvas
+            input_div_list[this.hiddenItems[i]].style.setProperty("display", "none");
+            // hide list
+            li_list[this.hiddenItems[i]].style.setProperty("display", "none");
         }
-        this.selectedItems = []; // Clear selected items
+    }
+
+    this.hideSelected = function(){
+        for (var i = 0; i < this.selectedItems.length; i++){
+            // add to hidden items
+            this.hiddenItems.push(this.selectedItems[i]);
+        }
+        this.hideItems();
     }
     // Show all items
-    this.showItems = function(){
+    this.showSelected = function(){
         var li_list = this.ul_e.querySelectorAll("li");
-        for (var i = 0; i < li_list.length; i++){
-            li_list[i].style.setProperty("display", "block");
+        var input_div_list = document.querySelectorAll(".mag_div_list .input_div");
+        for (var i = 0; i < this.selectedItems.length; i++){
+            // display canvas
+            input_div_list[this.selectedItems[i]].style.setProperty("display", "inline-block");
+            // display item list
+            li_list[this.selectedItems[i]].style.setProperty("display", "block");
+            // remove from hiden list (because has been shown again)
+            this.hiddenItems.splice(this.hiddenItems.indexOf(this.selectedItems[i]), 1);
         }
+        this.hideItems();
     }
 }
 
