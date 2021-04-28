@@ -2,3 +2,7 @@
     position: relative;
     font-family: sans-serif;
 }
+
+.display_item_menu *{
+  transition: all .6s ease;
+}
