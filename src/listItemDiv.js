@@ -2,6 +2,7 @@ function itemList(e, sortable){
     // e is the outmost div element of predefined `Item List`
     this.selectedItems = new Array();
     this.hiddenItems = new Array();
+    this.hiddenDict = {};
     this.ul_e = e.querySelector("ul.items_list");
     this.ul_pop = e.querySelector("ul.settings_pop_out")
     this.action = "";
@@ -21,6 +22,16 @@ function itemList(e, sortable){
     this.cancel_button.style.backgroundColor = "#f54266";
     this.action_button.style.display = "none"
     this.cancel_button.style.display = "none"
+
+    this.setDataset = function(dataset_name){
+        if (this.hiddenItems.length != 0){
+            // Save previous hidden items
+            this.hiddenDict[this.d_name] = this.hiddenItems;
+        }
+        this.d_name = dataset_name;
+        this.hiddenItems = this.hiddenDict[this.d_name] || new Array();
+        this.hideItems();
+    }
 
     window.addEventListener("click", function(ev){
         if (ev.target.parentNode != this.ul_pop &&

@@ -15,10 +15,18 @@
             </div>
         </div>
 
-        <!-- Action Buttons -->
-        <input type="button" class="div_button settings_button" value="Actions">
-        <input type="button" class="div_button action_button" value="OPTION">
-        <input type="button" class="div_button cancel_button" value="Cancel">
+        <div style="display: inline-block; position: relative">
+            <!-- Action Buttons -->
+            <input type="button" class="div_button settings_button" value="Actions">
+            <input type="button" class="div_button action_button" value="OPTION">
+            <input type="button" class="div_button cancel_button" value="Cancel">
+
+            <ul class="settings_pop_out">
+                <li><input type="button" value="Hide"></li>
+                <li><input type="button" value="Show"></li>
+                <li><input type="button" value="Delete" style="margin-bottom: -5px;"></li>
+            </ul>
+        </div>
 
         <!-- Infomation label for the information -->
         <div class="info">
@@ -37,11 +45,6 @@
             <!-- <option>image2.jpg</option> -->
         </select>
 
-        <ul class="settings_pop_out">
-            <li><input type="button" value="Hide"></li>
-            <li><input type="button" value="Show"></li>
-            <li><input type="button" value="Delete" style="margin-bottom: -5px;"></li>
-        </ul>
 
         <div class="scrollable_content">
             <ul class="items_list">
