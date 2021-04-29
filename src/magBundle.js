@@ -13,6 +13,7 @@ function magBundle(bundle_div){
     var dataset_index = 0;
     var img_index = 0;
 
+    // TODO: These variables should be synchronized by 
     var dataset_names = ["dataset1", "dataset2", "dataset3"]; // Dataset determine
     var img_paths_list = [
         {"exp01":["exp01/01.jpg", "exp01/03.jpg"], "exp02":["exp02/01.jpg", "exp02/03.jpg"]}, 
@@ -41,8 +42,8 @@ function magBundle(bundle_div){
         option.text = img_names[0][i];
         this.image_select_e.add(option);
     }
+
     // Initialize the exp list and the canvas
-    //<li><i class="far fa-square"></i><i class="fas fa-check-square"></i>Star</li>
     for (var i = 0; i < exp_names_list[0].length; i++){
         // ---------- Initialize the exp list ----------
         var text = exp_names_list[0][i];
@@ -66,7 +67,7 @@ function magBundle(bundle_div){
         var img_name_tag = document.createElement("div");
         var img_path = img_paths_list[0][exp_names_list[0][i]][0];
         img_name_tag.classList.add("img_name_tag");
-        img_name_tag.innerHTML = exp_names_list[0][i] + ": "  + img_path.split("/").pop();
+        img_name_tag.innerHTML = exp_names_list[0][i] + ": "  + img_names[0][i];
 
         // Display overall
         var input_e = Object.assign(document.createElement("input"), 
@@ -93,8 +94,7 @@ function magBundle(bundle_div){
         for (var i = 0; i < input_canvas.length; i++){
             let exp_name = item_list[i].textContent;
             input_canvas[i].src = img_paths_list[dataset_index][exp_name][index_now];
-            img_name_tags[i].innerHTML = exp_name + ": " 
-                    + img_paths_list[dataset_index][exp_name][index_now].split("/").pop();
+            img_name_tags[i].innerHTML = exp_name + ": " + img_names[dataset_index][index_now];
         }
         magnifying_div.reattachImageObj();
     }
@@ -122,6 +122,25 @@ function magBundle(bundle_div){
             }
         }
     );
+
+    // This info
+    this.sync_meta_data = function(){
+        for (var i = 0; i < dataset_names.length; i++){
+            var res_exp = this.res_exp_name;
+            var res_d = this.res_d_name;
+            if (dataset_names[i] == res_d){
+                img_paths_list[i][res_exp] = this.res_file_paths;
+                exp_names_list[i].push(res_exp);
+                img_names[i] = this.res_img_names;
+                return;
+            }
+            // New dataset
+            dataset_names.push(res_d);
+            img_names.push(this.res_img_names);
+            img_paths_list.push({res_exp: this.res_file_paths});
+            exp_names_list.push([res_exp]);
+        }
+    };
 }
 
 export {magBundle};

@@ -1,15 +1,16 @@
 - [x] Dataset change on-site button and dropdown List
   - [x] When selecting different images, change the canvas paint
-  - [ ] Change the item-list content, image-drop down list content and canvas content when change dataset
+  - [ ] Change the item-list content, image-drop down list content and canvas content when change metainfo
   - [x] Add Label to Each canvas
   - [x] Change the display content when dragging exps (**Problem FIXED**)
-  - [ ] Hide input_div when hide exp_item: have to rewrite the item list and revise the hide mechanism.
+  - [x] Hide input_div when hide exp_item: have to rewrite the item list and revise the hide mechanism.
 - [ ] Server side issue: dataset base management, image uploading and image retrieving
   - [x] Image retrieving useing express static image serving has been done.
-  - [ ] Database management
+  - [ ] Mongoose database management
   - [ ] Image uploading
     - [x] Client side uploading frame UI.
     - [ ] Client side uploading information displaying (interact with server side, pop out window)
-    - [ ] Client side axios files and pre-process
+      - [x] res/req meta data sync is almost done, now the most import thing is how to sync the displaying elements when changing metadata as well as how to maintain status data when changing dataset.
+    - [x] Client side axios files and pre-process
 - [ ] Bugs
   - [ ] Magnifying sudden change bug

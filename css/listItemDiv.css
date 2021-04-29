@@ -6,12 +6,6 @@
     top: 0px;
 }
 
-/*
-.display_item_menu *{
-  transition: all .4s ease;
-}
-*/
-
 /*The overall titile style property*/
 .display_item_menu div.title{
   display: inline-block;

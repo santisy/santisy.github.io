@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/uploadDiv.css">
 <link rel="stylesheet" href="/css/listItemDiv.css">
 <link rel="stylesheet" href="/css/magnifying.css">
 <script src="/dist/main_interp.js"></script>
@@ -52,12 +53,18 @@
             Dataset Name: <input class="dataset_input" type="text">
             <div class="info">
                 <span style="font-size: 12px;"><i class="fas fa-info-circle"></i></span>
-                <span class="extra-info"> <b>Upload your images of an experiment</b>: select an experiment folder
-                . The program will only upload the images at the folder <b>ROOT</b> and use the folder's name as 
-                the experiment name. In order to match images across different experiments, please use the same 
-                prefix on correponding images. Input the <b>DATASET</b> name in the input frame.</span>
+                <span class="extra-info"> <b>Upload your images of an experiment</b>: select an experiment folder. 
+                    The program will only upload the images (.jpg) at the folder's <b>ROOT</b> and use the folder's name as 
+                the experiment name. In order to match images across different experiments under the same dataset, 
+                please use the same prefix on corresponding images. Input the <b>Dataset Name</b> in the input frame before 
+                beginning to upload images.</span>
             </div>
             <input class="upload_button" type="file" webkitdirectory mozdirectory multiple accept="image/*" value="Upload">
+            <div class="upload_info">
+                <p></p>
+                <input class="OK" type="button" value="OK">
+                <input class="Cancel" type="button" value="Cancel">
+            </div>
         </div>
     </div>
 
