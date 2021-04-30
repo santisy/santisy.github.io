@@ -12,8 +12,10 @@ function magBundle(bundle_div){
 
     var dataset_index = 0;
 
+    // --------------------------------------------------
+    // META DATA`
+    // --------------------------------------------------
     var img_index_dict = {"dataset1": 0, "dataset2": 0, "dataset3": 0};
-    // TODO: These variables should be synchronized by 
     var dataset_names = ["dataset1", "dataset2", "dataset3"]; // Dataset determine
     var img_paths_list = [
         {"exp01":["exp01/01.jpg", "exp01/03.jpg"], "exp02":["exp02/01.jpg", "exp02/03.jpg"]}, 
@@ -39,6 +41,7 @@ function magBundle(bundle_div){
         }
     }
     )
+
     // item list instance initialization
     var item_list = new itemList(items_div, sortable); // The item list methods instance
 
@@ -65,14 +68,12 @@ function magBundle(bundle_div){
 
     // ---------- Main displaying part ----------
     function reCreate(d_index, img_index){
-        // Set dataset name to item list
-        item_list.setDataset(dataset_names[d_index]);
 
         // Clear Children if any
         exp_list.clearChildren();
         mag_div_e.clearChildren();
-        for (var i = 0; i < image_select_e.length; i++){
-            image_select_e.remove(i);
+        while (image_select_e.length > 0){
+            image_select_e.remove(0);
         }
 
         // Initialize the image dropdown
@@ -106,7 +107,7 @@ function magBundle(bundle_div){
             var img_name_tag = document.createElement("div");
             var img_path = img_paths_list[d_index][exp_names_list[d_index][i]][img_index];
             img_name_tag.classList.add("img_name_tag");
-            img_name_tag.innerHTML = exp_names_list[d_index][i] + ": "  + img_names[d_index][i];
+            img_name_tag.innerHTML = exp_names_list[d_index][i] + ": "  + img_names[d_index][img_index];
 
             // Display overall
             var input_e = Object.assign(document.createElement("input"), 
@@ -117,8 +118,12 @@ function magBundle(bundle_div){
             mag_div_e.appendChild(div_e);
         }
         magnifying_div.drawInputCanvas(); // Initialize input canvas
+
+        // Set dataset name to item list
+        item_list.setDataset(dataset_names[d_index]);
     };
     reCreate(0, 0);
+
 
 
     // Redisplay the canvas and change the tags when changing images, exp order, or datasets
