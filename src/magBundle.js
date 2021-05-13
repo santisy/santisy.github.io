@@ -9,8 +9,23 @@ function magBundle(bundle_div){
     var items_div = bundle_div.querySelector(".mag_bundle >.display_item_menu");
     // Initialize the magnifying classes and methods
     var magnifying_div = new magnifyingDiv(mag_div_e, 50, 70);
-
+    // Perimage display div
+    var per_image_display_div = document.querySelector(".per_image_display");
+    var pimg_input = per_image_display_div.querySelector("input");
+    var pimg_dis_exp_id = 0;
     var dataset_index = 0;
+
+    // Mag and per_image display switching
+    var mag_show_button = document.getElementById("mag_show_button");
+    var per_show_button = document.getElementById("per_show_button");
+    mag_show_button.addEventListener("click", function(){
+        mag_div_e.style.setProperty("display", "inline-block");
+        per_image_display_div.style.setProperty("display", "none");
+    })
+    per_show_button.addEventListener("click", function(){
+        mag_div_e.style.setProperty("display", "none");
+        per_image_display_div.style.setProperty("display", "inline-block");
+    })
 
     // --------------------------------------------------
     // META DATA`
@@ -18,10 +33,10 @@ function magBundle(bundle_div){
     var img_index_dict = {"dataset1": 0, "dataset2": 0, "dataset3": 0};
     var dataset_names = ["dataset1", "dataset2", "dataset3"]; // Dataset determine
     var img_paths_list = [
-        {"exp01":["exp01/01.jpg", "exp01/03.jpg"], "exp02":["exp02/01.jpg", "exp02/03.jpg"]}, 
+        {"exp01":["exp01/01.jpg", "exp01/02.jpg", "exp01/03.jpg"], "exp02":["exp02/01.jpg", "exp02/02.jpg", "exp02/03.jpg"]}, 
         {"exp01":["exp01/01.jpg"]}, 
         {"exp02":["exp02/01.jpg"]}];
-    var img_names = [["01.jpg", "03.jpg"], ["01.jpg"], ["01.jpg"]]; // maximum common names
+    var img_names = [["01.jpg", "02.jpg", "03.jpg"], ["01.jpg"], ["01.jpg"]]; // maximum common names
     var exp_names_list = [["exp01", "exp02"], ["exp01"], ["exp02"]];
 
     var dataset_list = bundle_div.querySelector(".title .dropdown-content"); // The dataset (at title) dropdown menu
@@ -42,6 +57,39 @@ function magBundle(bundle_div){
     }
     )
 
+    // Key left and right change per-image display
+    document.addEventListener("keydown", function(e){
+        if (per_image_display_div.style.display == "inline-block" && 
+            (e.code == "ArrowLeft" || e.code == "ArrowRight")
+        ){
+            let item_list = exp_list.querySelectorAll("li")
+            let exp_names = new Array();
+            for (var i = 0; i < item_list.length; i++){
+                if(item_list[i].style.display != "none"){
+                    exp_names.push(item_list[i].textContent);
+                }
+            }
+            let exp_len = exp_names.length;
+
+            let m_ = 0;
+            if (e.code == "ArrowLeft"){m_ = -1;}
+            else if(e.code == "ArrowRight"){m_ = 1;}
+
+            pimg_dis_exp_id = (pimg_dis_exp_id + m_) % exp_len;
+            if (pimg_dis_exp_id < 0) {pimg_dis_exp_id += exp_len;}
+            
+            let index_now = img_index_dict[dataset_names[dataset_index]];
+            let exp_name = exp_names[pimg_dis_exp_id];
+            let img_path = img_paths_list[dataset_index][exp_name][index_now];
+            let img_tag_str = exp_name + ": " + img_names[dataset_index][index_now];
+
+            pimg_input.src = img_path;
+            let pimg_tag = per_image_display_div.querySelector(".img_name_tag");
+            pimg_tag.innerHTML = img_tag_str;
+
+        }
+    });
+
     // item list instance initialization
     var item_list = new itemList(items_div, sortable); // The item list methods instance
 
@@ -58,6 +106,7 @@ function magBundle(bundle_div){
             for (var i = 0; i < dataset_names.length; i++){
                 if (dataset_names[i] == e.target.textContent){
                     dataset_index = i;
+                    pimg_dis_exp_id = 0; 
                     reCreate(dataset_index, 0);
                 }
             }
@@ -107,7 +156,13 @@ function magBundle(bundle_div){
             var img_name_tag = document.createElement("div");
             var img_path = img_paths_list[d_index][exp_names_list[d_index][i]][img_index];
             img_name_tag.classList.add("img_name_tag");
-            img_name_tag.innerHTML = exp_names_list[d_index][i] + ": "  + img_names[d_index][img_index];
+            var img_tag_str = exp_names_list[d_index][i] + ": "  + img_names[d_index][img_index];
+            img_name_tag.innerHTML = img_tag_str;
+            if (i == pimg_dis_exp_id){
+                pimg_input.src = img_path;
+                let pimg_tag = per_image_display_div.querySelector(".img_name_tag");
+                pimg_tag.innerHTML = img_tag_str;
+            }
 
             // Display overall
             var input_e = Object.assign(document.createElement("input"), 
@@ -139,8 +194,15 @@ function magBundle(bundle_div){
         // Reattach images
         for (var i = 0; i < input_canvas.length; i++){
             let exp_name = item_list[i].textContent;
-            input_canvas[i].src = img_paths_list[dataset_index][exp_name][index_now];
-            img_name_tags[i].innerHTML = exp_name + ": " + img_names[dataset_index][index_now];
+            let img_path = img_paths_list[dataset_index][exp_name][index_now];
+            let img_tag_str = exp_name + ": " + img_names[dataset_index][index_now];
+            input_canvas[i].src = img_path;
+            img_name_tags[i].innerHTML = img_tag_str;
+            if (i == pimg_dis_exp_id){
+                pimg_input.src = img_path;
+                let pimg_tag = per_image_display_div.querySelector(".img_name_tag");
+                pimg_tag.innerHTML = img_tag_str;
+            }
         }
         magnifying_div.reattachImageObj();
     }

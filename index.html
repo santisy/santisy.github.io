@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="node_modules/material-components-web/dist/material-components-web.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/uploadDiv.css">
@@ -17,9 +18,21 @@
 
         <div style="display: inline-block; position: relative">
             <!-- Action Buttons -->
-            <input type="button" class="div_button settings_button" value="Actions">
-            <input type="button" class="div_button action_button" value="OPTION">
-            <input type="button" class="div_button cancel_button" value="Cancel">
+            <input type="button" class="div_button settings_button
+                mdc-button mdc-button--raised mdc-button--primary
+                mdc-ripple-surface" 
+                data-mdc-auto-init="MDCRipple"
+                value="Actions">
+            <input type="button" class="div_button action_button
+                mdc-button mdc-button--raised mdc-button--primary
+                mdc-ripple-surface" 
+                data-mdc-auto-init="MDCRipple"
+                value="OPTION">
+            <input type="button" class="div_button cancel_button
+                mdc-button mdc-button--raised mdc-button--primary
+                mdc-ripple-surface" 
+                data-mdc-auto-init="MDCRipple"
+                value="Cancel">
 
             <ul class="settings_pop_out">
                 <li><input type="button" value="Hide"></li>
@@ -40,9 +53,12 @@
                 You can do actions like <i><b>Drag</b></i>, <i><b>Hide</b></i>,
                 <i><b>Show</b></i>, <i><b>Delete</b></i> on items.
                 For dragging, please directly use your computer mouse to drag them. For the later three actions,
-                click the right <b>Actions</b> button. <span style="color:red"><b>NOTE </b></span>
-                that the <i><b>Delete</b></i> action will delete items from the remote
-                server, so please use <i><b>Delete</b></i> when only necessary.</span>
+                click the <b>Actions</b> button. <span style="color:red"><b>NOTE </b></span>
+                that </br>
+                1. the <i><b>Delete</b></i> action will delete items from the remote
+                server, so please use <i><b>Delete</b></i> when only necessary. </br>
+                2. <i><b>Hide</b></i> will also hide images in magnifying and per-image displaying mode.
+            </span>
         </div>
 
 
@@ -71,7 +87,31 @@
         </div>
     </div>
 
-    <div class="mag_div_list">
+
+    <header class="nav_header mdc-toolbar mdc-elevation--z4">
+        <div class="mdc-toolbar__row"> 
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-start"> 
+                <span class="mdc-toolbar__title catalog-title">
+                    <i class="fas fa-search"></i> 
+                    <input type="button" class="
+                        mdc-button mdc-button--primary
+                        mdc-ripple-surface" 
+                        id="mag_show_button"
+                        data-mdc-auto-init="MDCRipple"
+                    value="Magnifying">
+                    | 
+                    <i class="fas fa-images"></i> 
+                    <input type="button" class="
+                        mdc-button mdc-button--primary
+                        mdc-ripple-surface" 
+                        id="per_show_button"
+                        data-mdc-auto-init="MDCRipple"
+                    value="Per-image Displaying">
+                </span>
+            </section>
+        </div>
+    </header>
+    <div class="mag_div_list" style="display: inline-block;">
         <!--
             <div class="input_div">
                 <div class="img_name_tag"> "dataset_name:01.jpg" </div>
@@ -79,4 +119,15 @@
             </div>
         -->
     </div>
+    <div class="per_image_display" style="display: none;">
+        <div class="img_name_tag"></div>
+        <input type="image" src="exp01/01.jpg">
+        <!--
+        <i class="left_arrow fas fa-chevron-left"></i>
+        <i class="right_arrow fas fa-chevron-right"></i>
+        -->
+    </div>
 </div>
+
+<script src="node_modules/material-components-web/dist/material-components-web.js"></script>
+<script>window.mdc.autoInit()</script>

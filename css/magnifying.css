@@ -1,7 +1,36 @@
+.nav_header{
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    padding: 10px;
+    margin-left: 20px;
+}
+
 .mag_div_list {
     display: inline-block;
     position: absolute;
-    top: 10px;
+    top: 60px;
+}
+
+.per_image_display {
+    display: inline-block;
+    position: absolute;
+    top: 80px;
+    align-items: center;
+    margin-left: 20px;
+    font-size: 40px;
+}
+
+.per_image_display i.left_arrow:hover{
+    cursor: pointer;
+}
+
+.per_image_display i.right_arrow:hover{
+    cursor: pointer;
+}
+
+.per_image_display input{
+    width: 400px;
 }
 
 .mag_div_list .input_div{
@@ -11,7 +40,7 @@
     padding: 0px;
 }
 
-.mag_div_list .input_div .img_name_tag{
+.img_name_tag{
     position: absolute;
     top: 0;
     font-family: sans-serif;
@@ -22,7 +51,7 @@
 }
 
 .mag_div_list .input_div p:hover{
-    cursor: cell;
+    cursor: pointer;
 }
 
 .mag_div_list .input_div input{
