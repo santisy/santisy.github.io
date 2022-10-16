@@ -2,132 +2,199 @@
 <link rel="stylesheet" href="./node_modules/material-components-web/dist/material-components-web.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="./css/main.css">
-<link rel="stylesheet" href="./css/uploadDiv.css">
-<link rel="stylesheet" href="./css/listItemDiv.css">
-<link rel="stylesheet" href="./css/magnifying.css">
 <script src="./dist/main_interp.js"></script>
 
-<div class="mag_bundle">
-    <div class="display_item_menu"> <!--Display Item Menu, to manipulate which experiments to be compared -->
-        <div class="title">standard_test_2021
-            <input class="title_button" type="button" value="">
-            <div class="dropdown-content">
-                <!--<a href="#">Link 2</a>-->
-            </div>
-        </div>
+<header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+        <span class="mdc-top-app-bar__title">Dingdong Yang's Homepage</span>
+      </section>
+      <div class="school-logo tooltip">
+        <img src="./files/sfu_logo.png" style='height: 100%; width: 100%;'> 
+        <span class="tooltiptext"> Simon Fraser University </span>
+      </div>
+    </div>
+</header>
 
-        <div style="display: inline-block; position: relative">
-            <!-- Action Buttons -->
-            <input type="button" class="div_button settings_button
-                mdc-button mdc-button--raised mdc-button--primary
-                mdc-ripple-surface" 
-                data-mdc-auto-init="MDCRipple"
-                value="Actions">
-            <input type="button" class="div_button action_button
-                mdc-button mdc-button--raised mdc-button--primary
-                mdc-ripple-surface" 
-                data-mdc-auto-init="MDCRipple"
-                value="OPTION">
-            <input type="button" class="div_button cancel_button
-                mdc-button mdc-button--raised mdc-button--primary
-                mdc-ripple-surface" 
-                data-mdc-auto-init="MDCRipple"
-                value="Cancel">
-
-            <ul class="settings_pop_out">
-                <li><input type="button" value="Hide"></li>
-                <li><input type="button" value="Show"></li>
-                <li><input type="button" value="Delete" style="margin-bottom: -5px;"></li>
-            </ul>
-        </div>
-
-        <!-- Which image to be compared -->
-        <select name="image_name" id="image_name_select">
-            <!-- <option>image2.jpg</option> -->
-        </select>
-
-        <!-- Infomation label for the information -->
-        <div class="info">
-            <span style="font-size: 10px;"><i class="fas fa-info-circle"></i></span>
-            <span class="extra-info"> This is a <b>Dispaly Item List</b> for manipulating the display items.
-                You can do actions like <i><b>Drag</b></i>, <i><b>Hide</b></i>,
-                <i><b>Show</b></i>, <i><b>Delete</b></i> on items.
-                For dragging, please directly use your computer mouse to drag them. For the later three actions,
-                click the <b>Actions</b> button. <span style="color:red"><b>NOTE </b></span>
-                that </br>
-                1. the <i><b>Delete</b></i> action will delete items from the remote
-                server, so please use <i><b>Delete</b></i> when only necessary. </br>
-                2. <i><b>Hide</b></i> will also hide images in magnifying and per-image displaying mode.
-            </span>
-        </div>
-
-
-        <div class="scrollable_content">
-            <ul class="items_list">
-                <!-- <li><i class="far fa-square"></i><i class="fas fa-check-square"></i>Star</li> -->
-            </ul>
-        </div>
-
-        <div class="upload_div">
-            Dataset Name: <input class="dataset_input" type="text">
+<main class="mdc-top-app-bar--fixed-adjust">
+    <div class="main-content" align="center">
+        <div class="portrait">
+            <img src="./files/portrait.jpg" style="width: 100%">
             <div class="info">
-                <span style="font-size: 12px;"><i class="fas fa-info-circle"></i></span>
-                <span class="extra-info"> <b>Upload your images of an experiment</b>: select an experiment folder. 
-                    The program will only upload the images (.jpg) at the folder's <b>ROOT</b> and use the folder's name as 
-                the experiment name. In order to match images across different experiments under the same dataset, 
-                please use the same prefix on corresponding images. Input the <b>Dataset Name</b> in the input frame before 
-                beginning to upload images.</span>
-            </div>
-            <input class="upload_button" type="file" webkitdirectory mozdirectory multiple accept="image/*" value="Upload">
-            <div class="upload_info">
-                <p></p>
-                <input class="OK" type="button" value="OK">
-                <input class="Cancel" type="button" value="Cancel">
-            </div>
-        </div>
-    </div>
-
-
-    <header class="nav_header mdc-toolbar mdc-elevation--z4">
-        <div class="mdc-toolbar__row"> 
-            <section class="mdc-toolbar__section mdc-toolbar__section--align-start"> 
-                <span class="mdc-toolbar__title catalog-title">
-                    <i class="fas fa-search"></i> 
-                    <input type="button" class="
-                        mdc-button mdc-button--primary
-                        mdc-ripple-surface" 
-                        id="mag_show_button"
-                        data-mdc-auto-init="MDCRipple"
-                    value="Magnifying">
-                    | 
-                    <i class="fas fa-images"></i> 
-                    <input type="button" class="
-                        mdc-button mdc-button--primary
-                        mdc-ripple-surface" 
-                        id="per_show_button"
-                        data-mdc-auto-init="MDCRipple"
-                    value="Per-image Displaying">
+                <span style="font-size: 10px;"><i class="fas fa-info-circle"></i></span>
+                <span class="extra-info"> 
+                    This photo was taken by my aunt Yingzhen Yang on Aug 18th, 2017 at Chincoteague Island, VA USA
                 </span>
-            </section>
-        </div>
-    </header>
-    <div class="mag_div_list" style="display: inline-block;">
-        <!--
-            <div class="input_div">
-                <div class="img_name_tag"> "dataset_name:01.jpg" </div>
-                <input type="image" src="imgs/01.jpg">
             </div>
-        -->
+            <div class="name">
+                <b>Dingdong Yang</b>
+            </div>
+            <div class="social-media">
+                <a href="https://twitter.com/intent/tweet?screen_name=didoyang1995&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to @didoyang1995</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+        </div>
+        <div class="main-scroll">
+            <!-- Introduction paragraph -->
+            <section class="main-introduction">
+                I am Dingdong Yang (杨定东). I got my Bachelor's degree from <a href="https://www.nju.edu.cn/EN/main.htm">Nanjing University</a>, China and my Master's degree
+                from <a href="https://umich.edu/">University of Michigan, Ann Arnor</a>. I did my research intern in Professor Honglak Lee's lab in Umich. After that, I did one-year full-time
+                research assistant in Professor Thomas Serre's Lab in Brown University. I also worked as computer vision engineer in Bytedance and other companies for three years.
+                I will join Simon Fraser University in Spring 2023 for PhD study and will be advised by <a href="https://www2.cs.sfu.ca/~haoz/index.html">Professor Hao (Richard) Zhang </a> and
+                <a href="https://www.sfu.ca/~amahdavi/Home.html">Professor Ali Mahdavi-Amiri</a>.
+                </br>
+                </br>
+                My research interests lie in generation models, especially 3D generation that closely combines Computer Graphics priors with learning based methods.
+            </section>
+
+            <hr class="separate-line">
+            <!-- Publication starts -->
+            <div class="publication-list">
+
+                <div class="title">
+                    Publications
+                </div>
+
+                <div class="publication">
+                    <div class="image">
+                        <img src="./files/AvatarGen.jpg">
+                    </div>
+                    <div class="texts">
+                        <div class="title">
+                        AvatarGen: a 3D Generative Model for Animatable Human Avatars
+                        </div>
+                        <div class="authors">
+                        Jianfeng Zhang<sup>*</sup>, Zihang Jiang<sup>*</sup>, <b>Dingdong Yang</b>, Hongyi Xu, Yichun Shi, Guoxian Song, Zhongcong Xu, Xinchao Wang, Jiashi Feng
+                        </br>
+                        ArXiv Pre-print
+                        </br>
+                        <span style="font-size:x-small">*co-first author</span>
+                        </div>
+                        <div class="button-div">
+                        <input type="button" class="pub-button
+                            mdc-button mdc-button--raised mdc-button--primary
+                            mdc-ripple-surface" 
+                            onclick=" window.open('https://arxiv.org/abs/2208.00561','_blank')"
+                            data-mdc-auto-init="MDCRipple", value="ArXiv">
+                        <input type="button" class="pub-button github-button
+                            mdc-button mdc-button--raised mdc-button--primary
+                            mdc-ripple-surface" 
+                            onclick=" window.open('https://github.com/jfzhang95/AvatarGen','_blank')"
+                            data-mdc-auto-init="MDCRipple", value="CODE">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="image">
+                        <img src="./files/D2HNet.jpg">
+                    </div>
+                    <div class="texts">
+                        <div class="title">
+                        D2HNet: Joint Denoising and Deblurring with Hierarchical Network for Robust Night Image Restoration
+                        </div>
+                        <div class="authors">
+                        Yuzhi Zhao, Yongzhe Xu, Qiong Yan, <b>Dingdong Yang</b>, Xuehui Wang, Lai-Man Po
+                        </br>
+                        ECCV 2022
+                        </div>
+                        <div class="button-div">
+                        <input type="button" class="pub-button
+                            mdc-button mdc-button--raised mdc-button--primary
+                            mdc-ripple-surface" 
+                            onclick=" window.open('https://arxiv.org/abs/2207.03294','_blank')"
+                            data-mdc-auto-init="MDCRipple", value="ArXiv">
+                        <input type="button" class="pub-button github-button
+                            mdc-button mdc-button--raised mdc-button--primary
+                            mdc-ripple-surface" 
+                            onclick=" window.open('https://github.com/zhaoyuzhi/D2HNet','_blank')"
+                            data-mdc-auto-init="MDCRipple", value="CODE">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="image">
+                        <img src="./files/Automatric_correction_with_cGAN.jpg">
+                    </div>
+                    <div class="texts">
+                        <div class="title">
+                        Automatic correction of lithography hotspots with a deep generative model
+                        </div>
+                        <div class="authors">
+                        Woojoo Sim, Kibok Lee, <b>Dingdong Yang</b>, Jaeseung Jeong, Ji-Suk Hong, Sooryong Lee, Honglak Lee
+                        </br>
+                        SPIE 2019
+                        </div>
+                        <div class="button-div">
+                        <input type="button" class="pub-button
+                            mdc-button mdc-button--raised mdc-button--primary
+                            mdc-ripple-surface" 
+                            onclick=" window.open('https://www.spiedigitallibrary.org/conference-proceedings-of-spie/10961/2514884/Automatic-correction-of-lithography-hotspots-with-a-deep-generative-model/10.1117/12.2514884.short?SSO=1','_blank')"
+                            data-mdc-auto-init="MDCRipple", value="SPIE Page">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="publication">
+                    <div class="image">
+                        <img src="./files/diversity-sensetive.jpg">
+                    </div>
+                    <div class="texts">
+                        <div class="title">
+                        Diversity-sensitive Conditional Generative Adversarial Networks
+                        </div>
+                        <div class="authors">
+                        <b>Dingdong Yang</b><sup>*</sup>, Seunghoon Hong<sup>*</sup>, Yunseok Jang, Tianchen Zhao, Honglak Lee
+                        </br>
+                        ICLR 2019
+                        </br>
+                        <span style="font-size:x-small">*co-first author</span>
+                        </div>
+                        <div class="button-div">
+                        <input type="button" class="pub-button
+                            mdc-button mdc-button--raised mdc-button--primary
+                            mdc-ripple-surface" 
+                            onclick=" window.open('https://arxiv.org/abs/1901.09024','_blank')"
+                            data-mdc-auto-init="MDCRipple", value="ArXiv">
+                        <input type="button" class="pub-button github-button
+                            mdc-button mdc-button--raised mdc-button--primary
+                            mdc-ripple-surface" 
+                            onclick=" window.open('https://github.com/maga33/DSGAN','_blank')"
+                            data-mdc-auto-init="MDCRipple", value="CODE">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="image">
+                        <img src="./files/hierarchical_text2image.jpg">
+                    </div>
+                    <div class="texts">
+                        <div class="title">
+                        Inferring Semantic Layout for Hierarchical Text-to-Image Synthesis
+                        </div>
+                        <div class="authors">
+                        Seunghoon Hong, <b>Dingdong Yang</b>, Jongwook Choi, Honglak Lee
+                        </br>
+                        CVPR 2018
+                        </div>
+                        <div class="button-div">
+                        <input type="button" class="pub-button
+                            mdc-button mdc-button--raised mdc-button--primary
+                            mdc-ripple-surface" 
+                            onclick=" window.open('https://arxiv.org/abs/1801.05091','_blank')"
+                            data-mdc-auto-init="MDCRipple", value="ArXiv">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        <footer> <small>&copy; Copyright 2022, Dingdong Yang</small> </footer> 
+        </div>
     </div>
-    <div class="per_image_display" style="display: none;">
-        <div class="img_name_tag"></div>
-        <input type="image" src="exp01/01.jpg">
-        <!--
-        <i class="left_arrow fas fa-chevron-left"></i>
-        <i class="right_arrow fas fa-chevron-right"></i>
-        -->
-    </div>
-</div>
+</main>
+
 
 <script src="./node_modules/material-components-web/dist/material-components-web.js"></script>
 <script>window.mdc.autoInit()</script>

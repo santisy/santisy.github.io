@@ -9,6 +9,7 @@
   "author": "yangdingdong",
   "license": "ISC",
   "dependencies": {
+    "@material/banner": "file:node_modules/@material/banner",
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "material-components-web": "^11.0.0",

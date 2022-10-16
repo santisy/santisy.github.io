@@ -1,18 +1,14 @@
-const magBundle = require("./src/magBundle").magBundle
-const uploadDiv = require("./src/uploadDiv").uploadDiv
+import {MDCTopAppBar} from '@material/top-app-bar';
 
-if( typeof Element.prototype.clearChildren === 'undefined' ) {
-    Object.defineProperty(Element.prototype, 'clearChildren', {
-      configurable: true,
-      enumerable: false,
-      value: function() {
-        while(this.firstChild) this.removeChild(this.lastChild);
-      }
-    });
-}
 
 window.onload = function(){
-    var mag_bundle_div = document.getElementsByClassName("mag_bundle")[0];
-    var mag_bundle = new magBundle(mag_bundle_div);
-    var upload_div = new uploadDiv(mag_bundle_div, mag_bundle);
+  // Instantiation
+  const topAppBarElement = document.querySelector('.mdc-top-app-bar');
+  const topAppBar = new MDCTopAppBar(topAppBarElement);
+
+  var school_logo_img = topAppBarElement.querySelector('.school-logo img');
+  school_logo_img.addEventListener("click", function(e){
+    window.open('https://www.sfu.ca', '_blank');
+  }
+  )
 }
