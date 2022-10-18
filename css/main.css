@@ -91,8 +91,19 @@ a {
 
 /* Portrait image is cirled masked */
 .main-content .portrait{
+  align-items: center;
   position: absolute;
   width: 200px;
+}
+
+.main-content .portrait .email{
+  display: block;
+  float: left;
+  margin-bottom: 10px;
+}
+
+.main-content .portrait .email:hover{
+  cursor: pointer;
 }
 
 .main-content .portrait img {
@@ -157,11 +168,13 @@ display: inline;
 .portrait .name{
   font-size: 20px;
   margin-top: 3px;
+  margin-bottom: 10px;
 }
 
 /* Social media location */
 .portrait .social-media{
-  margin-top: 8px;
+  align-items: left;
+  margin-top: 10px;
 }
 
 .main-content .main-scroll{
