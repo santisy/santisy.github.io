@@ -195,7 +195,7 @@ display: inline;
 
 /*Publication title*/
 .main-content .main-scroll .publication-list >.title{
-  font-size: min(2vw, 35px);
+  font-size: clamp(18px, 2vw, 35px);
   text-align: left;
   font-weight: bold;
   margin-top: min(2vh, 40px);
@@ -252,7 +252,7 @@ display: inline;
 .publication .texts >.title{
   align-items: left;
   text-align: left;
-  font-size: min(2vw, 20px);
+  font-size: min(15px, 2vw, 20px);
   font-weight: bold;
 }
 
