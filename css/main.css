@@ -252,7 +252,7 @@ display: inline;
 .publication .texts >.title{
   align-items: left;
   text-align: left;
-  font-size: min(15px, 2vw, 20px);
+  font-size: clamp(15px, 1.5vw, 20px);
   font-weight: bold;
 }
 
@@ -277,6 +277,10 @@ display: inline;
 
 .publication .texts .button-div input.github-button{
   background-color: #4298f5;
+}
+
+.publication .texts .button-div input.page-button{
+  background-color: #02b881;
 }
 
 footer{
