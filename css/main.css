@@ -220,6 +220,13 @@ display: inline;
   z-index: 1;
 }
 
+.publication >video{
+  max-width: min(11vw, 240px);
+  float: left;
+  position:relative;
+  z-index: 1;
+}
+
 .publication .image img{
   transition: all .2s ease-in-out;
   max-width: min(11vw, 240px);
