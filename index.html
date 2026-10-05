@@ -1,314 +1,261 @@
-<!DOCTYPE html>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="./node_modules/material-components-web/dist/material-components-web.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="./css/main.css">
-<link rel="icon" href="./files/read.png">
-<script src="./dist/main_interp.js"></script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dingdong Yang is a PhD student at Simon Fraser University researching generative 3D and agentic 3D creation.">
+  <meta name="theme-color" content="#8f1537">
+  <title>Dingdong Yang | Generative 3D &amp; Agentic 3D</title>
 
-<header class="mdc-top-app-bar mdc-top-app-bar--fixed">
-    <div class="mdc-top-app-bar__row">
-      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-        <span class="mdc-top-app-bar__title">Dingdong Yang's Homepage</span>
-      </section>
-      <div class="school-logo tooltip">
-        <img src="./files/sfu_logo.png" style='height: 100%; width: 100%;'> 
-        <span class="tooltiptext"> Simon Fraser University </span>
+  <link rel="icon" href="./files/read.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header sticky-top">
+    <nav class="navbar" aria-label="Primary navigation">
+      <div class="container-xl header-inner">
+        <a class="navbar-brand" href="#top" aria-label="Dingdong Yang's homepage">
+          <span class="brand-mark" aria-hidden="true">DY</span>
+          <span>Dingdong Yang</span>
+        </a>
+
+        <div class="header-links">
+          <a href="#publications">Publications</a>
+          <a href="https://storage.googleapis.com/public-access-profiles/yangdingdong-CV_EN_1005.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          <a class="sfu-link" href="https://www.sfu.ca" target="_blank" rel="noopener noreferrer" aria-label="Simon Fraser University">
+            <img src="./files/sfu_logo.png" alt="Simon Fraser University">
+          </a>
+        </div>
       </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="container-xl page-shell">
+    <div class="page-grid">
+        <section class="intro-card" aria-label="Biography and research interests">
+          <p class="focus-label">Generative 3D <span aria-hidden="true">·</span> Agentic 3D</p>
+          <p>
+            I am Dingdong Yang (杨定东). I am currently a PhD student at Simon Fraser University, advised by
+            <a href="https://www2.cs.sfu.ca/~haoz/index.html" target="_blank" rel="noopener noreferrer">Professor Hao (Richard) Zhang</a> and
+            <a href="https://www.sfu.ca/~amahdavi/Home.html" target="_blank" rel="noopener noreferrer">Professor Ali Mahdavi-Amiri</a>. I received my bachelor's degree from
+            <a href="https://www.nju.edu.cn/EN/main.htm" target="_blank" rel="noopener noreferrer">Nanjing University</a>, China, and my master's degree from the
+            <a href="https://umich.edu/" target="_blank" rel="noopener noreferrer">University of Michigan, Ann Arbor</a>. I conducted a research internship in Professor Honglak Lee's lab at UMich. After that, I worked as a full-time research assistant for one year in Professor Thomas Serre's lab at Brown University. I also worked as a computer vision engineer at ByteDance and other companies for three years.
+          </p>
+          <p>
+            My research interests lie in agentic 3D creation, generative models for 3D, and broadly related topics in generative modeling.
+            <a class="text-link" href="https://storage.googleapis.com/public-access-profiles/yangdingdong-CV_EN_1005.pdf" target="_blank" rel="noopener noreferrer">View full CV <span aria-hidden="true">↗</span></a>
+          </p>
+        </section>
+
+        <aside class="profile-column" aria-labelledby="profile-name">
+          <div class="profile-card">
+            <div class="portrait-wrap">
+              <img class="portrait-image" src="./files/new_headshot.jpeg" alt="Portrait of Dingdong Yang" width="507" height="547">
+            </div>
+
+            <div class="profile-heading">
+              <h1 id="profile-name">Dingdong Yang</h1>
+              <p class="chinese-name" lang="zh-Hans">杨定东</p>
+            </div>
+
+            <div class="profile-links" aria-label="Contact and academic profiles">
+              <a href="mailto:dya62@sfu.ca">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+                <span>dya62@sfu.ca</span>
+              </a>
+              <a href="https://twitter.com/didoyang1995?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23.2 22H17l-4.9-6.4L6.5 22H3.3l7.3-8.4L.8 2h6.4l4.4 5.8L18.9 2Zm-1.1 17.8h1.7L6.3 4.1H4.5l13.3 15.7Z"/></svg>
+                <span>Follow @didoyang1995</span>
+              </a>
+              <a href="https://www.linkedin.com/in/dingdong-yang-19b587116/" target="_blank" rel="noopener noreferrer">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.5 8.4H2.4V21h4.1V8.4ZM4.5 2A2.4 2.4 0 1 0 4.5 6.8 2.4 2.4 0 0 0 4.5 2ZM21.6 13.8c0-3.8-2-5.6-4.8-5.6a4.1 4.1 0 0 0-3.7 2.1V8.4H9V21h4.1v-6.2c0-1.6.3-3.2 2.4-3.2s2.1 1.9 2.1 3.3V21h4.1l-.1-7.2Z"/></svg>
+                <span>Dingdong's LinkedIn</span>
+              </a>
+              <a href="https://scholar.google.com/citations?user=bfrEr2YAAAAJ&amp;hl" target="_blank" rel="noopener noreferrer">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.2V17h2v-4.7l5 2.7 11-6-11-6Zm-6 9.8V18c2.8 2.7 9.2 2.7 12 0v-5.2L12 16l-6-3.2Z"/></svg>
+                <span>Google Scholar</span>
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <section class="experience-section" aria-labelledby="experience-title">
+          <div class="compact-heading">
+            <h2 id="experience-title">Internships &amp; Work</h2>
+            <a class="linkedin-heading-link" href="https://www.linkedin.com/in/dingdong-yang-19b587116/" target="_blank" rel="noopener noreferrer">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.5 8.4H2.4V21h4.1V8.4ZM4.5 2A2.4 2.4 0 1 0 4.5 6.8 2.4 2.4 0 0 0 4.5 2ZM21.6 13.8c0-3.8-2-5.6-4.8-5.6a4.1 4.1 0 0 0-3.7 2.1V8.4H9V21h4.1v-6.2c0-1.6.3-3.2 2.4-3.2s2.1 1.9 2.1 3.3V21h4.1l-.1-7.2Z"/></svg>
+              <span>LinkedIn</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div class="logo-row" aria-label="Organizations where Dingdong Yang has interned or worked">
+            <a class="organization-logo" href="https://www.meta.com/" target="_blank" rel="noopener noreferrer" title="Meta · Research Intern">
+              <img class="organization-logo-image" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Meta_Platforms_logo.svg" alt="Meta" loading="lazy">
+            </a>
+            <a class="organization-logo" href="https://www.tencent.com/" target="_blank" rel="noopener noreferrer" title="Tencent Hunyuan3D · Research Intern">
+              <img class="organization-logo-image organization-logo-image--wide" src="https://www.tencent.com/wp-content/uploads/2022/12/03_Tencent_English-logo.png" alt="Tencent" loading="lazy">
+            </a>
+            <a class="organization-logo" href="https://www.adobe.com/" target="_blank" rel="noopener noreferrer" title="Adobe · Research Intern">
+              <img class="organization-logo-image" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Adobe_Logo_Standard.svg" alt="Adobe" loading="lazy">
+            </a>
+            <a class="organization-logo" href="https://www.bytedance.com/" target="_blank" rel="noopener noreferrer" title="ByteDance · Computer Vision Engineer">
+              <img class="organization-logo-image organization-logo-image--wide" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/ByteDance_logo.svg" alt="ByteDance" loading="lazy">
+            </a>
+            <a class="organization-logo" href="https://www.sensetime.com/" target="_blank" rel="noopener noreferrer" title="SenseTime · Computer Vision Researcher">
+              <img class="organization-logo-image organization-logo-image--wide" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/SenseTime_Logo-Alternate.jpg" alt="SenseTime" loading="lazy">
+            </a>
+          </div>
+        </section>
+
+        <section id="publications" class="publications-section" aria-labelledby="publications-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Research</p>
+              <h2 id="publications-title">Publications</h2>
+            </div>
+          </div>
+
+          <article class="publication-card">
+            <div class="publication-media">
+              <img src="./files/meshfim_teaser.png" alt="MeshFIM method teaser" loading="lazy">
+            </div>
+            <div class="publication-content">
+              <p class="venue">NeurIPS 2026</p>
+              <h3>MeshFIM: Local Low-Poly Mesh Editing via Fill-in-the-Middle Autoregressive Generation</h3>
+              <p class="authors"><strong>Dingdong Yang</strong>, Jian Liu, Biwen Lei, Haohan Weng, Zhuo Chen, Song Guo, Hao Richard Zhang, Ali Mahdavi Amiri, Chunchao Guo</p>
+              <div class="publication-links">
+                <a href="https://arxiv.org/abs/2605.08744" target="_blank" rel="noopener noreferrer">ArXiv <span aria-hidden="true">↗</span></a>
+                <span class="disabled-link" aria-disabled="true" title="Project page coming soon">Project Page</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="publication-card">
+            <div class="publication-media">
+              <video controls preload="metadata" poster="./files/top_teaser_gala.png" aria-label="GALA project video">
+                <source src="https://storage.googleapis.com/project-gala-3ds/1030.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="publication-content">
+              <p class="venue">ICLR 2025</p>
+              <h3>GALA: Geometry-Aware Local Adaptive Grids for Detailed 3D Generation</h3>
+              <p class="authors"><strong>Dingdong Yang</strong>, Yizhi Wang, Konrad Schindler, Ali Mahdavi-Amiri, Hao Zhang</p>
+              <div class="publication-links">
+                <a href="https://arxiv.org/abs/2410.10037" target="_blank" rel="noopener noreferrer">ArXiv <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/santisy/project_sv" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a>
+                <a href="https://santisy.github.io/GALA/" target="_blank" rel="noopener noreferrer">Project Page <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="publication-card">
+            <div class="publication-media">
+              <img src="./files/concept_of_our_method.png" alt="BRICS method overview" loading="lazy">
+            </div>
+            <div class="publication-content">
+              <p class="venue">ArXiv Pre-print</p>
+              <h3>BRICS: Bi-level feature Representation of Image CollectionS</h3>
+              <p class="authors"><strong>Dingdong Yang</strong>, Yizhi Wang, Ali Mahdavi-Amiri, Hao Zhang</p>
+              <div class="publication-links">
+                <a href="https://arxiv.org/abs/2305.18601" target="_blank" rel="noopener noreferrer">ArXiv <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/brics-project/brics_code_release" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a>
+                <a href="https://brics-project.github.io/" target="_blank" rel="noopener noreferrer">Project Page <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="publication-card">
+            <div class="publication-media">
+              <img src="./files/AvatarGen.jpg" alt="AvatarGen generated avatar examples" loading="lazy">
+            </div>
+            <div class="publication-content">
+              <p class="venue">ECCV Workshop 2022</p>
+              <h3>AvatarGen: a 3D Generative Model for Animatable Human Avatars</h3>
+              <p class="authors">Jianfeng Zhang<sup>*</sup>, Zihang Jiang<sup>*</sup>, <strong>Dingdong Yang</strong>, Hongyi Xu, Yichun Shi, Guoxian Song, Zhongcong Xu, Xinchao Wang, Jiashi Feng</p>
+              <p class="author-note"><sup>*</sup>Co-first author</p>
+              <div class="publication-links">
+                <a href="https://arxiv.org/abs/2208.00561" target="_blank" rel="noopener noreferrer">ArXiv <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/jfzhang95/AvatarGen" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a>
+                <a href="http://jeff95.me/projects/avatargen.html" target="_blank" rel="noopener noreferrer">Project Page <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="publication-card">
+            <div class="publication-media">
+              <img src="./files/D2HNet.jpg" alt="D2HNet night image restoration results" loading="lazy">
+            </div>
+            <div class="publication-content">
+              <p class="venue">ECCV 2022</p>
+              <h3>D2HNet: Joint Denoising and Deblurring with Hierarchical Network for Robust Night Image Restoration</h3>
+              <p class="authors">Yuzhi Zhao, Yongzhe Xu, Qiong Yan, <strong>Dingdong Yang</strong>, Xuehui Wang, Lai-Man Po</p>
+              <div class="publication-links">
+                <a href="https://arxiv.org/abs/2207.03294" target="_blank" rel="noopener noreferrer">ArXiv <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/zhaoyuzhi/D2HNet" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="publication-card">
+            <div class="publication-media">
+              <img src="./files/Automatric_correction_with_cGAN.jpg" alt="Automatic lithography hotspot correction results" loading="lazy">
+            </div>
+            <div class="publication-content">
+              <p class="venue">SPIE 2019</p>
+              <h3>Automatic correction of lithography hotspots with a deep generative model</h3>
+              <p class="authors">Woojoo Sim, Kibok Lee, <strong>Dingdong Yang</strong>, Jaeseung Jeong, Ji-Suk Hong, Sooryong Lee, Honglak Lee</p>
+              <div class="publication-links">
+                <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/10961/2514884/Automatic-correction-of-lithography-hotspots-with-a-deep-generative-model/10.1117/12.2514884.short?SSO=1" target="_blank" rel="noopener noreferrer">SPIE Page <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="publication-card">
+            <div class="publication-media">
+              <img src="./files/diversity-sensetive.jpg" alt="Diversity-sensitive conditional GAN results" loading="lazy">
+            </div>
+            <div class="publication-content">
+              <p class="venue">ICLR 2019</p>
+              <h3>Diversity-sensitive Conditional Generative Adversarial Networks</h3>
+              <p class="authors"><strong>Dingdong Yang</strong><sup>*</sup>, Seunghoon Hong<sup>*</sup>, Yunseok Jang, Tianchen Zhao, Honglak Lee</p>
+              <p class="author-note"><sup>*</sup>Co-first author</p>
+              <div class="publication-links">
+                <a href="https://arxiv.org/abs/1901.09024" target="_blank" rel="noopener noreferrer">ArXiv <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/maga33/DSGAN" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a>
+                <a href="https://sites.google.com/view/iclr19-dsgan/?pli=1" target="_blank" rel="noopener noreferrer">Project Page <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="publication-card">
+            <div class="publication-media">
+              <img src="./files/hierarchical_text2image.jpg" alt="Hierarchical text-to-image synthesis examples" loading="lazy">
+            </div>
+            <div class="publication-content">
+              <p class="venue">CVPR 2018</p>
+              <h3>Inferring Semantic Layout for Hierarchical Text-to-Image Synthesis</h3>
+              <p class="authors">Seunghoon Hong, <strong>Dingdong Yang</strong>, Jongwook Choi, Honglak Lee</p>
+              <div class="publication-links">
+                <a href="https://arxiv.org/abs/1801.05091" target="_blank" rel="noopener noreferrer">ArXiv <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+        </section>
     </div>
-</header>
+  </main>
 
-<main class="mdc-top-app-bar--fixed-adjust">
-    <div class="main-content" align="center">
-        <div class="portrait">
-            <img src="./files/new_headshot.jpeg" style="width: 100%">
-            <div class="info">
-                <span style="font-size: 10px;"><i class="fas fa-info-circle"></i></span>
-                <span class="extra-info"> 
-                    This photo was taken by my aunt Yingzhen Yang on Aug 18th, 2017 at Chincoteague Island, VA USA
-                </span>
-            </div>
-            <div class="name">
-                <b>Dingdong Yang</b>
-            </div>
-            <div class="email" onclick="window.location = 'mailto:dya62@sfu.ca'">
-                <i class="fas fa-envelope"></i> dya62@sfu.ca
-            </div> 
-            <div class="email" onclick="window.open('https://twitter.com/didoyang1995?ref_src=twsrc%5Etfw')">
-                <i class="fab fa-twitter"></i> Follow @didoyang1995
-            </div> 
-            <div class="email" onclick="window.open('https://www.linkedin.com/in/dingdong-yang-19b587116/')">
-                <i class="fab fa-linkedin"></i> Dingdong's LinkedIn
-            </div> 
-            <div class="email" onclick="window.open('https://scholar.google.com/citations?user=bfrEr2YAAAAJ&hl')">
-                <i class="fab fa-google"></i> Google Scholar
-            </div> 
-        </div>
-        <div class="main-scroll">
-            <!-- Introduction paragraph -->
-            <section class="main-introduction">
-                I am Dingdong Yang (杨定东). I got my Bachelor's degree from <a href="https://www.nju.edu.cn/EN/main.htm">Nanjing University</a>, China and my Master's degree
-                from <a href="https://umich.edu/">University of Michigan, Ann Arbor</a>. I did my research internship in Professor Honglak Lee's lab in Umich. After that, I worked as a one-year full-time
-                research assistant in Professor Thomas Serre's Lab in Brown University. I also worked as a computer vision engineer in Bytedance and other companies for three years.
-                I am now a PhD student in Simon Fraser University and advised by <a href="https://www2.cs.sfu.ca/~haoz/index.html">Professor Hao (Richard) Zhang </a> and
-                <a href="https://www.sfu.ca/~amahdavi/Home.html">Professor Ali Mahdavi-Amiri</a>.
-                </br>
-                </br>
-                My research interests lie in Generative Models, especially 3D Generation as well as video diffusion models. <a href="https://storage.googleapis.com/public-access-profiles/yangdingdong-CV_EN_simplified_newest.pdf"> Full CV</a>
-            </section>
-
-            <hr class="separate-line">
-            <!-- Publication starts -->
-            <div class="publication-list">
-
-                <div class="title">
-                    Publications
-                </div>
-
-                <div class="publication">
-                    <div class="image">
-                        <img src="./files/meshfim_teaser.png">
-                    </div>
-                    <div class="texts">
-                        <div class="title">
-                            MeshFIM: Local Low-Poly Mesh Editing via Fill-in-the-Middle Autoregressive Generation
-                        </div>
-                        <div class="authors">
-                            <b>Dingdong Yang</b>, Jian Liu, Biwen Lei, Haohan Weng, Zhuo Chen, Song Guo, Hao Richard Zhang, Ali Mahdavi Amiri, Chunchao Guo
-                        </br>
-                        NeurIPS 2026
-                        </div>
-                        <div class="button-div">
-                        <input type="button" class="pub-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface"
-                            onclick=" window.open('https://arxiv.org/abs/2605.08744','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="ArXiv">
-                        <input type="button" class="pub-button page-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface"
-                            data-mdc-auto-init="MDCRipple", value="Project Page">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <video controls>
-                        <source src="https://storage.googleapis.com/project-gala-3ds/1030.mp4" type="video/mp4">
-                    </video>
-                    <div class="texts">
-                        <div class="title">
-                            GALA: Geometry-Aware Local Adaptive Grids for Detailed 3D Generation
-                        </div>
-                        <div class="authors">
-                            <b>Dingdong Yang</b>, Yizhi Wang, Konrad Schindler, Ali Mahdavi-Amiri, Hao Zhang
-                        </br>
-                        ICLR 2025
-                        </div>
-                        <div class="button-div">
-                        <input type="button" class="pub-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://arxiv.org/abs/2410.10037','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="ArXiv">
-                        <input type="button" class="pub-button github-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://github.com/santisy/project_sv','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="CODE">
-                        <input type="button" class="pub-button page-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://santisy.github.io/GALA/','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="Project Page">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <div class="image">
-                        <img src="./files/concept_of_our_method.png">
-                    </div>
-                    <div class="texts">
-                        <div class="title">
-                            BRICS: Bi-level feature Representation of Image CollectionS
-                        </div>
-                        <div class="authors">
-                        <b>Dingdong Yang</b>, Yizhi Wang, Ali Mahdavi-Amiri, Hao Zhang
-                        </br>
-                        ArXiv Pre-print
-                        </div>
-                        <div class="button-div">
-                        <input type="button" class="pub-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://arxiv.org/abs/2305.18601','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="ArXiv">
-                        <input type="button" class="pub-button github-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://github.com/brics-project/brics_code_release','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="CODE">
-                        <input type="button" class="pub-button page-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://brics-project.github.io/','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="Project Page">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <div class="image">
-                        <img src="./files/AvatarGen.jpg">
-                    </div>
-                    <div class="texts">
-                        <div class="title">
-                        AvatarGen: a 3D Generative Model for Animatable Human Avatars
-                        </div>
-                        <div class="authors">
-                        Jianfeng Zhang<sup>*</sup>, Zihang Jiang<sup>*</sup>, <b>Dingdong Yang</b>, Hongyi Xu, Yichun Shi, Guoxian Song, Zhongcong Xu, Xinchao Wang, Jiashi Feng
-                        </br>
-                        ECCV Workshop 2022
-                        </br>
-                        <span style="font-size:x-small">*co-first author</span>
-                        </div>
-                        <div class="button-div">
-                        <input type="button" class="pub-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://arxiv.org/abs/2208.00561','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="ArXiv">
-                        <input type="button" class="pub-button github-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://github.com/jfzhang95/AvatarGen','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="CODE">
-                        <input type="button" class="pub-button page-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('http://jeff95.me/projects/avatargen.html','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="Project Page">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <div class="image">
-                        <img src="./files/D2HNet.jpg">
-                    </div>
-                    <div class="texts">
-                        <div class="title">
-                        D2HNet: Joint Denoising and Deblurring with Hierarchical Network for Robust Night Image Restoration
-                        </div>
-                        <div class="authors">
-                        Yuzhi Zhao, Yongzhe Xu, Qiong Yan, <b>Dingdong Yang</b>, Xuehui Wang, Lai-Man Po
-                        </br>
-                        ECCV 2022
-                        </div>
-                        <div class="button-div">
-                        <input type="button" class="pub-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://arxiv.org/abs/2207.03294','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="ArXiv">
-                        <input type="button" class="pub-button github-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://github.com/zhaoyuzhi/D2HNet','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="CODE">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <div class="image">
-                        <img src="./files/Automatric_correction_with_cGAN.jpg">
-                    </div>
-                    <div class="texts">
-                        <div class="title">
-                        Automatic correction of lithography hotspots with a deep generative model
-                        </div>
-                        <div class="authors">
-                        Woojoo Sim, Kibok Lee, <b>Dingdong Yang</b>, Jaeseung Jeong, Ji-Suk Hong, Sooryong Lee, Honglak Lee
-                        </br>
-                        SPIE 2019
-                        </div>
-                        <div class="button-div">
-                        <input type="button" class="pub-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://www.spiedigitallibrary.org/conference-proceedings-of-spie/10961/2514884/Automatic-correction-of-lithography-hotspots-with-a-deep-generative-model/10.1117/12.2514884.short?SSO=1','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="SPIE Page">
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="publication">
-                    <div class="image">
-                        <img src="./files/diversity-sensetive.jpg">
-                    </div>
-                    <div class="texts">
-                        <div class="title">
-                        Diversity-sensitive Conditional Generative Adversarial Networks
-                        </div>
-                        <div class="authors">
-                        <b>Dingdong Yang</b><sup>*</sup>, Seunghoon Hong<sup>*</sup>, Yunseok Jang, Tianchen Zhao, Honglak Lee
-                        </br>
-                        ICLR 2019
-                        </br>
-                        <span style="font-size:x-small">*co-first author</span>
-                        </div>
-                        <div class="button-div">
-                        <input type="button" class="pub-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://arxiv.org/abs/1901.09024','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="ArXiv">
-                        <input type="button" class="pub-button github-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://github.com/maga33/DSGAN','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="CODE">
-                        <input type="button" class="pub-button page-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://sites.google.com/view/iclr19-dsgan/?pli=1','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="Project Page">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <div class="image">
-                        <img src="./files/hierarchical_text2image.jpg">
-                    </div>
-                    <div class="texts">
-                        <div class="title">
-                        Inferring Semantic Layout for Hierarchical Text-to-Image Synthesis
-                        </div>
-                        <div class="authors">
-                        Seunghoon Hong, <b>Dingdong Yang</b>, Jongwook Choi, Honglak Lee
-                        </br>
-                        CVPR 2018
-                        </div>
-                        <div class="button-div">
-                        <input type="button" class="pub-button
-                            mdc-button mdc-button--raised mdc-button--primary
-                            mdc-ripple-surface" 
-                            onclick=" window.open('https://arxiv.org/abs/1801.05091','_blank')"
-                            data-mdc-auto-init="MDCRipple", value="ArXiv">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        <footer> <small>&copy; Copyright 2022, Dingdong Yang</small> </footer> 
-        </div>
+  <footer class="site-footer">
+    <div class="container-xl footer-inner">
+      <span>&copy; 2026 Dingdong Yang</span>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </div>
-</main>
+  </footer>
 
-
-<script src="./node_modules/material-components-web/dist/material-components-web.js"></script>
-<script>window.mdc.autoInit()</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
