@@ -121,7 +121,10 @@
 
           <article class="publication-card">
             <div class="publication-media">
-              <img src="./files/meshfim_teaser.png" alt="MeshFIM method teaser" loading="lazy">
+              <button class="publication-image-trigger" type="button" data-bs-toggle="modal" data-bs-target="#publicationImageModal" data-image-src="./files/meshfim_teaser.png" data-image-alt="MeshFIM method teaser" data-image-title="MeshFIM: Local Low-Poly Mesh Editing via Fill-in-the-Middle Autoregressive Generation" aria-label="Enlarge the MeshFIM image">
+                <img src="./files/meshfim_teaser.png" alt="MeshFIM method teaser" loading="lazy">
+                <span class="publication-zoom-hint" aria-hidden="true">View larger</span>
+              </button>
             </div>
             <div class="publication-content">
               <p class="venue">NeurIPS 2026</p>
@@ -155,7 +158,10 @@
 
           <article class="publication-card">
             <div class="publication-media">
-              <img src="./files/concept_of_our_method.png" alt="BRICS method overview" loading="lazy">
+              <button class="publication-image-trigger" type="button" data-bs-toggle="modal" data-bs-target="#publicationImageModal" data-image-src="./files/concept_of_our_method.png" data-image-alt="BRICS method overview" data-image-title="BRICS: Bi-level feature Representation of Image CollectionS" aria-label="Enlarge the BRICS image">
+                <img src="./files/concept_of_our_method.png" alt="BRICS method overview" loading="lazy">
+                <span class="publication-zoom-hint" aria-hidden="true">View larger</span>
+              </button>
             </div>
             <div class="publication-content">
               <p class="venue">ArXiv Pre-print</p>
@@ -171,7 +177,10 @@
 
           <article class="publication-card">
             <div class="publication-media">
-              <img src="./files/AvatarGen.jpg" alt="AvatarGen generated avatar examples" loading="lazy">
+              <button class="publication-image-trigger" type="button" data-bs-toggle="modal" data-bs-target="#publicationImageModal" data-image-src="./files/AvatarGen.jpg" data-image-alt="AvatarGen generated avatar examples" data-image-title="AvatarGen: a 3D Generative Model for Animatable Human Avatars" aria-label="Enlarge the AvatarGen image">
+                <img src="./files/AvatarGen.jpg" alt="AvatarGen generated avatar examples" loading="lazy">
+                <span class="publication-zoom-hint" aria-hidden="true">View larger</span>
+              </button>
             </div>
             <div class="publication-content">
               <p class="venue">ECCV Workshop 2022</p>
@@ -188,7 +197,10 @@
 
           <article class="publication-card">
             <div class="publication-media">
-              <img src="./files/D2HNet.jpg" alt="D2HNet night image restoration results" loading="lazy">
+              <button class="publication-image-trigger" type="button" data-bs-toggle="modal" data-bs-target="#publicationImageModal" data-image-src="./files/D2HNet.jpg" data-image-alt="D2HNet night image restoration results" data-image-title="D2HNet: Joint Denoising and Deblurring with Hierarchical Network for Robust Night Image Restoration" aria-label="Enlarge the D2HNet image">
+                <img src="./files/D2HNet.jpg" alt="D2HNet night image restoration results" loading="lazy">
+                <span class="publication-zoom-hint" aria-hidden="true">View larger</span>
+              </button>
             </div>
             <div class="publication-content">
               <p class="venue">ECCV 2022</p>
@@ -203,7 +215,10 @@
 
           <article class="publication-card">
             <div class="publication-media">
-              <img src="./files/Automatric_correction_with_cGAN.jpg" alt="Automatic lithography hotspot correction results" loading="lazy">
+              <button class="publication-image-trigger" type="button" data-bs-toggle="modal" data-bs-target="#publicationImageModal" data-image-src="./files/Automatric_correction_with_cGAN.jpg" data-image-alt="Automatic lithography hotspot correction results" data-image-title="Automatic correction of lithography hotspots with a deep generative model" aria-label="Enlarge the lithography hotspot correction image">
+                <img src="./files/Automatric_correction_with_cGAN.jpg" alt="Automatic lithography hotspot correction results" loading="lazy">
+                <span class="publication-zoom-hint" aria-hidden="true">View larger</span>
+              </button>
             </div>
             <div class="publication-content">
               <p class="venue">SPIE 2019</p>
@@ -217,7 +232,10 @@
 
           <article class="publication-card">
             <div class="publication-media">
-              <img src="./files/diversity-sensetive.jpg" alt="Diversity-sensitive conditional GAN results" loading="lazy">
+              <button class="publication-image-trigger" type="button" data-bs-toggle="modal" data-bs-target="#publicationImageModal" data-image-src="./files/diversity-sensetive.jpg" data-image-alt="Diversity-sensitive conditional GAN results" data-image-title="Diversity-sensitive Conditional Generative Adversarial Networks" aria-label="Enlarge the diversity-sensitive conditional GAN image">
+                <img src="./files/diversity-sensetive.jpg" alt="Diversity-sensitive conditional GAN results" loading="lazy">
+                <span class="publication-zoom-hint" aria-hidden="true">View larger</span>
+              </button>
             </div>
             <div class="publication-content">
               <p class="venue">ICLR 2019</p>
@@ -234,7 +252,10 @@
 
           <article class="publication-card">
             <div class="publication-media">
-              <img src="./files/hierarchical_text2image.jpg" alt="Hierarchical text-to-image synthesis examples" loading="lazy">
+              <button class="publication-image-trigger" type="button" data-bs-toggle="modal" data-bs-target="#publicationImageModal" data-image-src="./files/hierarchical_text2image.jpg" data-image-alt="Hierarchical text-to-image synthesis examples" data-image-title="Inferring Semantic Layout for Hierarchical Text-to-Image Synthesis" aria-label="Enlarge the hierarchical text-to-image synthesis image">
+                <img src="./files/hierarchical_text2image.jpg" alt="Hierarchical text-to-image synthesis examples" loading="lazy">
+                <span class="publication-zoom-hint" aria-hidden="true">View larger</span>
+              </button>
             </div>
             <div class="publication-content">
               <p class="venue">CVPR 2018</p>
@@ -249,6 +270,20 @@
     </div>
   </main>
 
+  <div class="modal fade publication-lightbox" id="publicationImageModal" tabindex="-1" aria-labelledby="publicationImageModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-sm-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="publicationImageModalTitle">Publication image</h2>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close image viewer"></button>
+        </div>
+        <div class="modal-body">
+          <img id="publicationImageModalImage" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="container-xl footer-inner">
       <span>&copy; 2026 Dingdong Yang</span>
@@ -257,5 +292,23 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script>
+    const publicationImageModal = document.getElementById("publicationImageModal");
+    const publicationImageModalImage = document.getElementById("publicationImageModalImage");
+    const publicationImageModalTitle = document.getElementById("publicationImageModalTitle");
+
+    publicationImageModal.addEventListener("show.bs.modal", (event) => {
+      const trigger = event.relatedTarget;
+      publicationImageModalImage.src = trigger.dataset.imageSrc;
+      publicationImageModalImage.alt = trigger.dataset.imageAlt;
+      publicationImageModalTitle.textContent = trigger.dataset.imageTitle;
+    });
+
+    publicationImageModal.addEventListener("hidden.bs.modal", () => {
+      publicationImageModalImage.removeAttribute("src");
+      publicationImageModalImage.alt = "";
+      publicationImageModalTitle.textContent = "Publication image";
+    });
+  </script>
 </body>
 </html>
